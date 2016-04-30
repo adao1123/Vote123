@@ -45,6 +45,7 @@ public class FindPollingActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         service = retrofit.create(CivicInfoApiService.class);
+        buttonListener();
     }
 
     private void buttonListener(){
