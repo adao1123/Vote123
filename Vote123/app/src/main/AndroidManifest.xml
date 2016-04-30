@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".FindPollingActivity" />
+        <activity android:name=".QuickReferenceActivity"></activity>
     </application>
 
 </manifest>
