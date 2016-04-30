@@ -42,8 +42,15 @@
 
 
     <Button
-        android:text="set election day"
-        android:id="@+id/add_election_date"
-        android:layout_width="wrap_content"
+        android:text="set election day to Calendar"
+    android:id="@+id/add_election_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Share all set to vote"
+        android:id="@+id/registered_shareButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>
