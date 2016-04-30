@@ -10,11 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.FindPollingActivity">
 
-    <TextView
-        android:id="@+id/pollingAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
     <EditText
         android:id="@+id/editTextStreetName"
         android:layout_width="match_parent"
@@ -40,4 +35,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Find Polling Place"/>
+    <TextView
+        android:id="@+id/pollingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:text="set election day"
+        android:id="@+id/add_election_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
