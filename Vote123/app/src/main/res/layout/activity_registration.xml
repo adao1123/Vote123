@@ -9,4 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.RegistrationActivity">
 
+    <WebView
+        android:id="@+id/register_webView_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </WebView>
+
 </RelativeLayout>
