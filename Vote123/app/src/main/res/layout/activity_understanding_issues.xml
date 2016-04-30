@@ -28,12 +28,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
-            <TextView
-                android:id="@+id/procon_TV_ID"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"/>
-
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/procon_TV_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"/>
+            </ScrollView>
         </RelativeLayout>
 
         <LinearLayout
@@ -75,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="IDK"/>
+                android:text="Undecided"/>
             <Button
                 android:id="@+id/YES_button_ID"
                 android:layout_width="match_parent"

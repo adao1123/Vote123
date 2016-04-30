@@ -46,4 +46,9 @@
         </item>
 
     </string-array>
+    <string-array name="proptitles">
+        <item>California \"Fair Wage Act of 2016\" $15 Minimum Wage Initiative (2016)</item>
+        <item>Medi\-Cal Hospital Reimbursement Initiative</item>
+        <item>Education Act</item>
+    </string-array>
 </resources>

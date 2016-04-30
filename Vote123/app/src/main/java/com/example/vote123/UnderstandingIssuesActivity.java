@@ -97,13 +97,13 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
                 nextQuestion();
             }
         });
-        textLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleTextVisibility(0);
-                isQuestion = !isQuestion;
-            }
-        });
+//        textLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toggleTextVisibility(0);
+//                isQuestion = !isQuestion;
+//            }
+//        });
         costButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,14 +139,6 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
             default:
                 break;
         }
-//
-//        if (isQuestion){
-//            questionTV.setVisibility(View.INVISIBLE);
-//            costTV.setVisibility(View.VISIBLE);
-//        }else{
-//            questionTV.setVisibility(View.VISIBLE);
-//            costTV.setVisibility(View.INVISIBLE);
-//        }
     }
     private void nextQuestion(){
         questionNumber++;
@@ -154,6 +146,7 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
         if (questionNumber>=questions.length-1) {
             Toast.makeText(UnderstandingIssuesActivity.this,"Done",Toast.LENGTH_LONG).show();
             Log.i(TAG, "nextQuestion: end "+questionNumber );
+            goToLastPage();
         }else {
             Log.i(TAG, "nextQuestion: "+questionNumber);
             if (!isQuestion) toggleTextVisibility(0);
@@ -161,7 +154,6 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
             costTV.setText(costs[questionNumber]);
             proconTV.setText(procons[questionNumber]);
         }
-
     }
     private void goToLastPage(){
         prop1title.setText(propTitles[0]);
@@ -185,5 +177,4 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
                 return "?";
         }
     }
-
 }
