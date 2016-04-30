@@ -19,8 +19,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private final String TAG = getClass().getName();
     private final String URL = "http://registertovote.ca.gov";
+    private final String doneRegisteringURL = "https://covr.sos.ca.gov/Home/Confirmation";
 
-    //https://covr.sos.ca.gov/Home/Confirmation
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class RegistrationActivity extends AppCompatActivity {
         webView.setWebViewClient(customWebViewClient);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(URL);
+        customWebViewClient.onPageFinished(webView, doneRegisteringURL);
 
     }
 
@@ -57,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri imageURI = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + );
+                Uri imageURI = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + "iamregisteredareyou.png");
                 String message = "I just registered to vote using Vote123! It was super easy to use and I'm excited to vote in the upcoming election.";
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("*/*");//share.setType("text/plain").setType("image/*")
@@ -78,9 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-
-
-            //put stuff here
+            toolbar.setVisibility(View.VISIBLE);
         }
     }
 }
