@@ -6,5 +6,6 @@
     <color name="officialBlue">#215A9E</color>
     <color name="officialRed">#EF4135</color>
     <color name="black">#000</color>
+    <color name="white">#FFF</color>
 
 </resources>
