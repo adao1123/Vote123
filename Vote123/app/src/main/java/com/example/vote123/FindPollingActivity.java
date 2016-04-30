@@ -98,7 +98,7 @@ public class FindPollingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 insertEventInCalendar("Election Day", "Don't forget to Vote today!" , returnAddress);
-                addReminderInCalendar();
+                //addReminderInCalendar();
 
             }
         });
@@ -130,7 +130,9 @@ public class FindPollingActivity extends AppCompatActivity {
     }
 
 
-    /** Adds Events and Reminders in Calendar. */
+    /** Adds Events and Reminders in Calendar.
+     * Currently not using atm.. keeping for future revision
+     * */
     private void addReminderInCalendar() {
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(2016, Calendar.NOVEMBER, 8, 10, 0);
@@ -149,6 +151,7 @@ public class FindPollingActivity extends AppCompatActivity {
         /** Inserting an event in calendar. */
         ContentValues values = new ContentValues();
         values.put(CalendarContract.Events.CALENDAR_ID, 2);
+        values.put(CalendarContract.Events.CALENDAR_ID, 1);
         values.put(CalendarContract.Events.TITLE, "Election Day");
         values.put(CalendarContract.Events.DESCRIPTION, "Remember to Vote Today!");
         values.put(CalendarContract.Events.ALL_DAY, 0);
