@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.vote123"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,5 +27,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.0.1'
+    compile 'com.jakewharton.timber:timber:4.1.2'
+
 
 }
