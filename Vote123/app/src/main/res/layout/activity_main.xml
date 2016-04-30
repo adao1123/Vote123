@@ -20,7 +20,7 @@
         android:id="@+id/main_subTitle_textView_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voting Made Easy"
+        android:text="Voting Made Easy | California Edition"
         android:layout_below="@+id/main_title_textView_id"/>
 
     <Button
