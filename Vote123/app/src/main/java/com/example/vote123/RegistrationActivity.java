@@ -60,6 +60,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Uri imageURI = Uri.parse("http://imgur.com/hXVOBNe"); //was  "http://i.imgur.com/hXVOBNe.png"
+//                Uri imageURI = Uri.parse("http://i.imgur.com/hXVOBNe"); //was "android.resource://" + getPackageName() + "/drawable/" + "iamregisteredareyou.png"
                 String message = "I just registered to vote using Vote123! It was super easy to use and I'm excited to vote in the upcoming election.";
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("*/*");//share.setType("text/plain").setType("image/*")

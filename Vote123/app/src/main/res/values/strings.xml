@@ -1,17 +1,54 @@
 <resources>
     <string name="app_name">Vote123</string>
     <string-array name="questions">
-        <item>Do you think that the minimum wage should be increased to 15$ by 2021?</item>
+        <item>Do you think that the minimum wage should be increased to $15 by 2021?</item>
         <item>Do you think changes to the hospital fee program should require voter approval?</item>
         <item>Do you think that we should allow bilingual education in public schools.</item>
         <item></item>
+
     </string-array>
+
     <string-array name="costs">
         <item>Government spending will increase in the billions and tax revenues will change as some companies may leave CA.</item>
         <item>The state will gain between 500 million a year to eventually earn 1 billion a year. Hospitals will receive 250 million in yearly government spending that will increase every year. </item>
-        <item>TODO</item>
+        <item>Potential significant local costs to provide access to any language educational model that the parents in the same grade level request. Increase in the workload for CA Dept of Education to oversee implementation.</item>
     </string-array>
+
     <string-array name="procon">
-        <item></item>
+        <item> In Favor
+            \n Lieutenant Governor Newsom said in announcing his support for the measure: \n\"Millions of hardworking Californians struggle every day to provide for themselves and their families because their wages have not kept up with the high cost of living in our state. California leads the country on so many issues like the environment, civil rights and public health, so it\’s only appropriate that we also lead on addressing income inequality.\"
+
+            \n\n Not In Favor\n Michael Saltsman, research director at the Employment Policies Institute, argued: \"Look no further than San Francisco\'s restaurant industry, which has been hit hard by the $15 minimum wage that passed in November 2014 and is currently phasing in. Abbot\'s Cellar, once one of the city\'s 100 restaurants, closed its doors earlier this year and cited the minimum wage hike as a determining factor. For Source, a now shuttered vegetarian restaurant, the increased labor costs were the \"nail in its coffin.\" Labor markets in Imperial County, for example, already struggle to supply even more experienced job-seekers with work. The unemployment rate for all employees hovers around 22 percent. Across all occupations, the median hourly wage is $13.79. Even supporters of a higher minimum wage are uncomfortable with a wage floor that\'s much higher than half of the median wage, which means $15 would be economic suicide for Imperial County.</item>
+        <item> In Favor
+            \nThe California Hospital Association announced the initiative on July 25, 2013, and gave the following reasons for doing developing the initiative. The following is an excerpt from the association\'s press release:\n
+            \"The initiative, called the Medi Cal Funding and Accountability Act of 2014, will prohibit the Legislature and the Administration from imposing a provider fee (tax) on hospitals unless the monies and matching federal funds are used to pay for hospital care provided to Medi-Cal patients, which include the elderly, the disabled and children. Since 2009, California hospitals have agreed to pay the state nearly $3 billion annually, with the monies then used by the state to draw down matching federal funds for the Medi-Cal program. As part of the agreement, hospitals have supported the state taking a small portion of the fee money to pay for health care for children. Since the inception of the program, however, the state has diverted some of the hospital fee money to the state’s General Fund for other purposes. \n
+            \"For more than two decades, California has not appropriated the monies necessary to draw down the full amount of available federal matching funds for Medi-Cal payments to hospitals,\" said CHA President/CEO C. Duane Dauner. \"As a result, California has left billions of dollars in available federal funds on the table in Washington D.C. and significantly underpaid hospitals that provide life- saving care to Medi-Cal patients.\n
+            \"California hospitals stepped into this void in 2009 by agreeing to front the state’s share of the monies necessary to garner the matching federal dollars,\" Dauner added, \"but the effectiveness of this effort is being undermined by the state\'s continual redirection of increasing amounts of the hospital fee money into the General Fund.\"\n
+            Currently, private hospitals in California pay $3 billion a year to the state under the hospital fee program. The state is diverting $620 million of the hospital fee money (prior to qualifying for federal matching funds) into the General Fund in the 2013-2014 budget year. This \"rake-off\" of the hospital fee money is being used to offset budget deficits rather than being used by hospitals to provide care to patients. The remaining dollars (after the rake-off) are then used to draw down federal Medicaid matching funds. The combined hospital and federal monies are redistributed to private hospitals in the form of supplemental Medi-Cal payments. This program does not cover all of the losses hospitals incur from the Medi-Cal program, since half of the money is put up by the hospitals themselves. Nevertheless, the fee program does allow the state to bring in additional federal funds.\n
+            California’s Medi-Cal program ranks last in the nation when it comes to funding health care for Medicaid patients. In 2012, Medi-Cal underpaid California hospitals by more than $5 billion. Medi- Cal payment shortfalls result in significant financial losses for hospitals, and force hospitals to shift these unpaid costs to private payers. The supplemental payments resulting from the hospital fee program help cover a portion of those losses.\n
+            According to Dauner, the only way to ensure that the fees contributed by hospitals are used for their intended purpose is through a voter-approved ballot initiative which prohibits the state from diverting the money for non-health care purposes.
+            \"Unfortunately, it is too tempting for lawmakers on both sides of the aisle to dip into these funds as part of the budget process,\" Dauner said. \"These monies are intended to help cover the costs of caring for the state\'s Medi-Cal patients and it\'s only appropriate that safeguards are put in place to assure that’s how the funds are used.\"
+
+            \n\n Not In Favor
+            \nWhen Service Employees International Union, United Health Care Workers West (SEIU-UHW) formed its political fund, Californians for Hospital Accountability and Quality Care, in December 2015, the union stated:\"Several ballot measures have been filed with the Attorney General\'s office that would limit the compensation of hospital executives to the same salary as the President of the United States. Another measure related to the hospital provider fee program has already qualified for the ballot while yet another was filed two weeks ago that raises taxes, in part, to fund hospitals. Both funding initiatives potentially put billions of dollars at the disposal of hospital executives with little accountability around access, affordability and quality.\"
+        </item>
+
+        <item>In Favor
+            \n Dr. Phillip M. Carter, a sociolinguist professor and scholar of language at Florida International University, wrote an op-ed calling for the repeal of Proposition 227. He criticized the proposition, saying, \"Looking back, it\'s clear that restrictive language policies such as Proposition 227 have been problematic all along, but in our era of globalization, education that seeks to eradicate the native bilingualism of its students makes less sense than ever in economic and sociocultural terms.\" He argued that opposition to bilingual education is largely based on refutable myths:\n
+            \"Myth No. 1: Latinos in the U.S. do not want to / cannot / will not learn English: Social science data show that Latinos learn English at a rate as fast or faster than that of prior immigrant groups.
+            \"Myth No. 2: Speaking Spanish at school detracts from learning English: This belief is premised on a false dichotomy that pits knowing Spanish against learning English. Fortunately, for non-language-impaired children, knowing one language is not a roadblock in the acquisition of another. In fact, some evidence suggests that policies restricting the use of the home language actually have negative effects on the acquisition of literacy skills in English.
+            \"Myth No. 3: Children will simply learn Spanish in the home: People tend to think language can be acquired just by receiving enough inputs to \"crack the code\"  that hearing mom and dad speaking Spanish is enough. But language is much more than the sum of its rules. Language is also the identity you make in it, the experiences, the relationships, and the memories that come from using the language across many contexts. In many U.S. Latino communities, receptive bilingualism, a pattern in which parents speak to children in Spanish, who respond in English is common. While comprehension is an important language skill, speech production and literacy skills are equally necessary for jobs in the growing bilingual labor market.
+            \"Myth No. 4: Spanish is taking over U.S. schools: While it is true that the overall number of Spanish speakers in the U.S. is expected to increase, this is due to new immigration. U.S. language history shows that immigrant languages are mostly or completely lost by the third generation. Research shows that Spanish is being lost across generations at roughly the same rate as previous immigrant languages such as Italian and Dutch.
+            \n\n Not In Favor
+            \nRon Unz, who developed Proposition 227, criticized the legislative referral. He said, The proposal is totally ridiculous and demonstrates that Sen. Lara has never bothered to investigate the issue. The academic performance of over a million immigrant students roughly doubled in the four years following the passage of Proposition 227.
+            \n\n Mauro E. Mujica, U.S. English chairperson, encouraged the legislature to reject SB 1174, saying:
+            \n\"Being surrounded by English speakers has been shown to lead to faster proficiency among non-English speakers. Furthermore, being surrounded by other foreign language speakers has been shown to delay English acquisition. The ability to learn a foreign language is an advantage and should be encouraged among students, I myself speak four languages. But in the United States, English proficiency should be the primary objective. Without it, students will face a life struggling with language barriers. Conversely, with a strong base of English proficiency, the doors of opportunity will open to them. I urge the California State Senate to oppose SB 1174 and continue making it their priority to assist English language learner students to acquire English proficiency as soon as possible.\"
+        </item>
+
+    </string-array>
+    <string-array name="proptitles">
+        <item>California \"Fair Wage Act of 2016\" $15 Minimum Wage Initiative (2016)</item>
+        <item>Medi\-Cal Hospital Reimbursement Initiative</item>
+        <item>Education Act</item>
     </string-array>
 </resources>
