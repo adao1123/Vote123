@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Vote123</string>
+    <string name="app_name">Vote 1-2-3</string>
+    <string name="understanding_button_text">Explore The Issues</string>
+    <string name="quick_reference_buttonName">Quick Reference</string>
+    <string name="find_your_poll_button">Find Your Polling Place</string>
+    <string name="register_vote_button">Register to Vote</string>
+
 
     <string-array name="questions">
         <item>Do you think that the minimum wage should be increased to $15 by 2021?</item>
