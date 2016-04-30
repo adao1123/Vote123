@@ -3,40 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.example.vote123.FindPollingActivity">
 
-    <TextView
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:id="@+id/polling_titleView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your nearest Polling Place"/>
 
     <TextView
-        android:layout_marginTop="25dp"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:id="@+id/polling_addressTextView"
+        android:id="@+id/pollingAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1234 foothill blvd \nOakland CA"
-        android:layout_marginBottom="20dp"/>
+        android:text="Hello World!" />
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <EditText
+        android:id="@+id/editTextStreetName"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/map"
-        tools:context=".MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
-
-
-
+        android:layout_height="wrap_content"
+        android:hint="Street"/>
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="City"/>
+    <EditText
+        android:id="@+id/editTextState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="State"/>
+    <EditText
+        android:id="@+id/editTextZip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Zip Code"/>
+    <Button
+        android:id="@+id/buttonID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Find Polling Place"/>
 
 </LinearLayout>

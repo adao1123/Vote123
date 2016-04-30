@@ -1,105 +1,76 @@
 package com.example.vote123;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import com.example.vote123.google.PermissionUtils;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import java.util.Calendar;
 
-public class FindPollingActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleMap.OnMyLocationButtonClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-    private boolean mPermissionDenied = false;
-    private GoogleMap mMap;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+public class FindPollingActivity extends AppCompatActivity {
+
+    private static final String API_KEY = "AIzaSyBAy7FDJ0OB6tB1TjKkubsVr24qk9qxxUQ";
+    private static final String ELECTION_ID = "2000";
+    EditText editStreet;
+    EditText editCity;
+    EditText editState;
+    EditText editZip;
+    Button button;
+    TextView textView;
+    String inputedAddress;
+    CivicInfoApiService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_polling);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+        editStreet = (EditText)findViewById(R.id.editTextStreetName);
+        editCity = (EditText)findViewById(R.id.editTextCity);
+        editState = (EditText)findViewById(R.id.editTextState);
+        editZip = (EditText)findViewById(R.id.editTextZip);
+        button = (Button)findViewById(R.id.buttonID);
+        textView = (TextView)findViewById(R.id.pollingAddress);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.googleapis.com/civicinfo/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        service = retrofit.create(CivicInfoApiService.class);
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mMap.setOnMyLocationButtonClickListener(this);
-        enableMyLocation();
+    private void buttonListener(){
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inputedAddress = editStreet.getText().toString()+editCity.getText()+editState.getText();
+                Call<AddressData> call = service.getAddressInfo(inputedAddress,API_KEY,ELECTION_ID);
+                call.enqueue(new Callback<AddressData>() {
+                    @Override
+                    public void onResponse(Call<AddressData> call, Response<AddressData> response) {
+                        AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
+                        String pollingName = pollingPlace.getPollingPlaceName();
+                        AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
 
+                        String addressName = response.body().getPollingLocations()[0].getPollingPlaceAddress().getAddressStreet();
+                        textView.setText(pollingAddress.getAddressStreet() + pollingAddress.getAddressCity() + pollingAddress.getAddressState() + pollingAddress.getAddressZip());
+                    }
 
-    }
+                    @Override
+                    public void onFailure(Call<AddressData> call, Throwable t) {
 
-    /**
-     * Enables the My Location layer if the fine location permission has been granted.
-     */
-    private void enableMyLocation() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Permission to access the location is missing.
-            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-        } else if (mMap != null) {
-            // Access to the location has been granted to the app.
-            mMap.setMyLocationEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
-        return false;
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            return;
-        }
-
-        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-                Manifest.permission.ACCESS_FINE_LOCATION)) {
-            // Enable the my location layer if the permission has been granted.
-            enableMyLocation();
-        } else {
-            // Display the missing permission error dialog when the fragments resume.
-            mPermissionDenied = true;
-        }
-    }
-
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        if (mPermissionDenied) {
-            // Permission was not granted, display error dialog.
-            showMissingPermissionError();
-            mPermissionDenied = false;
-        }
-    }
-
-    /**
-     * Displays a dialog with error message explaining that the location permission is missing.
-     */
-    private void showMissingPermissionError() {
-        PermissionUtils.PermissionDeniedDialog
-                .newInstance(true).show(getSupportFragmentManager(), "dialog");
+                    }
+                });
+            }
+        });
     }
 }
