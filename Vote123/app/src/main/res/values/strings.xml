@@ -5,5 +5,13 @@
         <item>Do you think changes to the hospital fee program should require voter approval?</item>
         <item>Do you think that we should allow bilingual education in public schools.</item>
         <item></item>
-</string-array>
+    </string-array>
+    <string-array name="costs">
+        <item>Government spending will increase in the billions and tax revenues will change as some companies may leave CA.</item>
+        <item>The state will gain between 500 million a year to eventually earn 1 billion a year. Hospitals will receive 250 million in yearly government spending that will increase every year. </item>
+        <item>TODO</item>
+    </string-array>
+    <string-array name="procon">
+        <item></item>
+    </string-array>
 </resources>
