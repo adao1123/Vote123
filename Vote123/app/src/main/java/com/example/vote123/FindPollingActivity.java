@@ -109,11 +109,14 @@ public class FindPollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String message = "I'm registered and ready to Vote, are you?";
-                Intent share = new Intent(Intent.ACTION_SEND);
-               // share.setType(R.drawable.hilary_we_can);
-                share.putExtra(Intent.EXTRA_TEXT, message);
-                ​
-                startActivity(Intent.createChooser(share, "Share article with ... "));
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//                shareIntent.setType("image/*");
+////                Uri uri = Uri.parse("android.resource://com.example.vote123/" + R.drawable.iamregisteredareyou);
+//                Uri uri = Uri.parse("android.resource://com.example.vote123/drawable/" + R.drawable.hillary_we_can);
+               // shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(shareIntent, "Sharing"));
+
             }
         });
 
