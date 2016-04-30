@@ -11,68 +11,131 @@
     tools:context="com.example.vote123.UnderstandingIssuesActivity">
 
     <RelativeLayout
-        android:id="@+id/textLayoutID"
+        android:id="@+id/original_page_ID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/question_TV_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/cost_TV_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"/>
-        <TextView
-            android:id="@+id/procon_TV_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/textLayoutID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/question_TV_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/cost_TV_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/procon_TV_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/yesnobuttons"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/cost_button_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cost"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/procon_button_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pro/Con"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/yesnobuttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp">
+            <Button
+                android:id="@+id/NO_button_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NO"/>
+            <Button
+                android:id="@+id/IDK_button_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="IDK"/>
+            <Button
+                android:id="@+id/YES_button_ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="YES"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/result_page_ID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/cost_button_ID"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/procon_button_ID"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/prop1NameID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/answer1ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/propName2ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/answer2ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/prop3NameID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/answer3ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"/>
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp">
-        <Button
-            android:id="@+id/NO_button_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="NO"/>
-        <Button
-            android:id="@+id/IDK_button_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="IDK"/>
-        <Button
-            android:id="@+id/YES_button_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="YES"/>
-    </LinearLayout>
-
 </RelativeLayout>
