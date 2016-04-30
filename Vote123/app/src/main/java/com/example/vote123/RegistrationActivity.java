@@ -2,12 +2,14 @@ package com.example.vote123;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class RegistrationActivity extends AppCompatActivity {
     WebView webView;
     CustomWebViewClient customWebViewClient;
+    Toolbar toolbar;
 
     private final String TAG = getClass().getName();
     private final String URL = "http://registertovote.ca.gov";
@@ -20,10 +22,12 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         webView = (WebView) findViewById(R.id.register_webView_id);
+        toolbar = (Toolbar) findViewById(R.id.register_toolbar_id);
         customWebViewClient = new CustomWebViewClient();
         webView.setWebViewClient(customWebViewClient);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(URL);
+
 
     }
 
