@@ -34,15 +34,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next, Find Your Polling Place"
-            android:textSize="6sp"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:textColor="@color/white"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/register_share_button_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Share"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:textColor="@color/white"
+            android:visibility="invisible"/>
     </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>

@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         subTitleTextView = (TextView) findViewById(R.id.main_subTitle_textView_id);
         registerButton = (Button) findViewById(R.id.main_register_button_id);
         pollingButton = (Button) findViewById(R.id.main_polling_button_id);
-        quickRefButton = (Button) findViewById(R.id.main_quickRef_button_id);
         issuesButton = (Button) findViewById(R.id.main_issues_button_id);
     }
 
@@ -48,14 +47,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FindPollingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        quickRefButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, QuickReferenceActivity.class);
                 startActivity(intent);
             }
         });
