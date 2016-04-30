@@ -41,8 +41,8 @@ public class FindPollingActivity extends AppCompatActivity {
     String inputedAddress;
     String returnAddress;
     CivicInfoApiService service;
-    Button calendarButton;
-
+    private Button calendarButton;
+    private Button shareButton;
 
 
 
@@ -51,6 +51,7 @@ public class FindPollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_polling);
 
+        shareButton = (Button)findViewById(R.id.registered_shareButton);
         calendarButton = (Button)findViewById(R.id.add_election_date);
         editStreet = (EditText)findViewById(R.id.editTextStreetName);
         editCity = (EditText)findViewById(R.id.editTextCity);
@@ -75,6 +76,7 @@ public class FindPollingActivity extends AppCompatActivity {
                 call.enqueue(new Callback<AddressData>() {
                     @Override
                     public void onResponse(Call<AddressData> call, Response<AddressData> response) {
+                        if (response.body().getPollingLocations()[0]==null) return;
                         AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
                         AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
                         returnAddress = pollingAddress.getAddressStreet() + " " + pollingAddress.getAddressCity() + " " + pollingAddress.getAddressState() + " " + pollingAddress.getAddressZip();
@@ -97,9 +99,21 @@ public class FindPollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                insertEventInCalendar("Election Day", "Don't forget to Vote today!" , returnAddress);
+                insertEventInCalendar("Election Day", "Don't forget to Vote today!", returnAddress);
                 //addReminderInCalendar();
 
+            }
+        });
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "I'm registered and ready to Vote, are you?";
+                Intent share = new Intent(Intent.ACTION_SEND);
+               // share.setType(R.drawable.hilary_we_can);
+                share.putExtra(Intent.EXTRA_TEXT, message);
+                ​
+                startActivity(Intent.createChooser(share, "Share article with ... "));
             }
         });
 
