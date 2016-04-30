@@ -38,17 +38,10 @@
         android:layout_below="@+id/main_register_button_id"/>
 
     <Button
-        android:id="@+id/main_quickRef_button_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quick Reference"
-        android:layout_below="@+id/main_polling_button_id"/>
-
-    <Button
         android:id="@+id/main_issues_button_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Understanding the Issues"
-        android:layout_below="@+id/main_quickRef_button_id"/>
+        android:text="Explore the Issues"
+        android:layout_below="@+id/main_polling_button_id"/>
 
 </RelativeLayout>
