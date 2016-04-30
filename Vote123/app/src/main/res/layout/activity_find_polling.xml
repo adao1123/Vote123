@@ -39,4 +39,11 @@
         android:id="@+id/pollingAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:text="set election day"
+        android:id="@+id/add_election_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
