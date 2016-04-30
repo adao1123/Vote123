@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Vote123</string>
+    <string-array name="questions">
+        <item>Do you think that the minimum wage should be increased to 15$ by 2021?</item>
+        <item>Do you think changes to the hospital fee program should require voter approval?</item>
+        <item>Do you think that we should allow bilingual education in public schools.</item>
+        <item></item>
+</string-array>
 </resources>
