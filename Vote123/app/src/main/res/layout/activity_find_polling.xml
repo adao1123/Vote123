@@ -10,7 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.FindPollingActivity">
 
-
+    <ImageView
+        android:id="@+id/pollingHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/pollingheader"/>
 
     <EditText
         android:id="@+id/editTextStreetName"
@@ -36,23 +40,30 @@
         android:id="@+id/buttonID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Find Polling Place"/>
+        android:background="@drawable/submit"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:id="@+id/pollingAddress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/officialBlue"
+        android:textSize="18dp"
+        android:layout_marginBottom="10dp"/>
 
 
     <Button
-        android:text="set election day to Calendar"
+        android:background="@drawable/addtocal"
         android:id="@+id/add_election_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
 
     <Button
-        android:text="Share all set to vote"
         android:id="@+id/registered_shareButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/sharelong"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>

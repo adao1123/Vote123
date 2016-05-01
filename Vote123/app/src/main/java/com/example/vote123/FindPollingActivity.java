@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class FindPollingActivity extends AppCompatActivity {
     CivicInfoApiService service;
     private Button calendarButton;
     private Button shareButton;
+    ImageView header;
 
 
 
@@ -51,6 +53,7 @@ public class FindPollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_polling);
 
+        header = (ImageView) findViewById(R.id.pollingHeader);
         shareButton = (Button)findViewById(R.id.registered_shareButton);
         calendarButton = (Button)findViewById(R.id.add_election_date);
         editStreet = (EditText)findViewById(R.id.editTextStreetName);
