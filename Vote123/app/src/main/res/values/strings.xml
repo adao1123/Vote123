@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">Vote123</string>
+    <string name="app_name">Vote 1-2-3</string>
+    <string name="understanding_button_text">Explore The Issues</string>
+    <string name="quick_reference_buttonName">Quick Reference</string>
+    <string name="find_your_poll_button">Find Your Polling Place</string>
+    <string name="register_vote_button">Register to Vote</string>
+
+
     <string-array name="questions">
         <item>Do you think that the minimum wage should be increased to $15 by 2021?</item>
         <item>Do you think changes to the hospital fee program should require voter approval?</item>
@@ -49,6 +55,11 @@
     <string-array name="proptitles">
         <item>California \"Fair Wage Act of 2016\" $15 Minimum Wage Initiative (2016)</item>
         <item>Medi\-Cal Hospital Reimbursement Initiative</item>
-        <item>Education Act</item>
+        <item>Multilingual Education Act</item>
+        <item>Plastic Bag Ban Referendum</item>
+        <item>Public Vote on Bonds Initiative</item>
+        <item>Public Education Facilities Bond Initiative</item>
+        <item>Condoms in Pornographic Films Initiative</item>
+        <item>Drug Price Relief Initiative</item>
     </string-array>
 </resources>

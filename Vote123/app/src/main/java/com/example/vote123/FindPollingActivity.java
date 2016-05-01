@@ -2,7 +2,9 @@ package com.example.vote123;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CalendarContract;
@@ -88,6 +90,11 @@ public class FindPollingActivity extends AppCompatActivity {
                         Log.i(TAG, "Input Address: " + inputedAddress);
                         Log.i(TAG, "Return Address: " + returnAddress);
                         textView.setText(returnAddress);
+                        SharedPreferences sharedPreferences = getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("POLLING_ADDRESS", returnAddress);
+                        editor.commit();
+
                     }
 
                     @Override
@@ -111,15 +118,11 @@ public class FindPollingActivity extends AppCompatActivity {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = "I'm registered and ready to Vote, are you?";
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//                shareIntent.setType("image/*");
-////                Uri uri = Uri.parse("android.resource://com.example.vote123/" + R.drawable.iamregisteredareyou);
-//                Uri uri = Uri.parse("android.resource://com.example.vote123/drawable/" + R.drawable.hillary_we_can);
-               // shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
-                startActivity(Intent.createChooser(shareIntent, "Sharing"));
-
+                String message = "I just registered to vote using Vote 1-2-3! Vote 1-2-3 makes voting easy!";
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(share, "Sharing"));
             }
         });
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="understanding_button_text">Explora los Temas</string>
+    <string name="find_your_poll_button">Encontrar su Lugar de Votación</string>
+    <string name="register_vote_button">Registrarse para Votar</string>
+
+
+
+</resources>
