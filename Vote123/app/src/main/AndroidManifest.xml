@@ -25,9 +25,6 @@
         <activity android:name=".QuickReferenceActivity" />
         <activity android:name=".UnderstandingIssuesActivity" />
         <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".UnderstandingIssuesActivity">
-
-        </activity>
     </application>
 
 </manifest>
