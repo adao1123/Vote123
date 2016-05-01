@@ -11,23 +11,21 @@
         android:allowBackup="true"
         android:icon="@drawable/vote123logo"
         android:label="@string/app_name"
-        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:supportsRtl="true"
         android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
+        <activity android:name=".RegistrationActivity"> </activity>
         <activity android:name=".FindPollingActivity" />
         <activity android:name=".QuickReferenceActivity" />
-        <activity android:name=".UnderstandingIssuesActivity"></activity>
+        <activity android:name=".UnderstandingIssuesActivity">
+
+        </activity>
     </application>
 
 </manifest>
