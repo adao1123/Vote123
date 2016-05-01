@@ -1,5 +1,8 @@
 package com.example.vote123;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,17 +20,11 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
 
     private static final String TAG = "UNDERSTANDING ISSUES";
     RelativeLayout textLayout;
-    RelativeLayout origPage;
-    LinearLayout resultPage;
+//    RelativeLayout origPage;
+//    LinearLayout resultPage;
     TextView questionTV;
     TextView costTV;
     TextView proconTV;
-    TextView prop1title;
-    TextView prop2title;
-    TextView prop3title;
-    TextView prop1answer;
-    TextView prop2answer;
-    TextView prop3answer;
     Button noButton;
     Button yesButton;
     Button idkButton;
@@ -39,7 +36,6 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
     private String[] questions;
     private String[] costs;
     private String[] procons;
-    private String[] propTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +46,14 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
         questions = getResources().getStringArray(R.array.questions);
         costs = getResources().getStringArray(R.array.costs);
         procons = getResources().getStringArray(R.array.procon);
-        propTitles = getResources().getStringArray(R.array.proptitles);
         initializeViews();
         initializeListeners();
         nextQuestion();
     }
 
     private void initializeViews(){
-        origPage = (RelativeLayout)findViewById(R.id.original_page_ID);
-        resultPage = (LinearLayout)findViewById(R.id.result_page_ID);
+//        origPage = (RelativeLayout)findViewById(R.id.original_page_ID);
+//        resultPage = (LinearLayout)findViewById(R.id.result_page_ID);
         textLayout = (RelativeLayout)findViewById(R.id.textLayoutID);
         proconTV = (TextView)findViewById(R.id.procon_TV_ID);
         questionTV = (TextView)findViewById(R.id.question_TV_ID);
@@ -68,12 +63,6 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
         idkButton = (Button)findViewById(R.id.IDK_button_ID);
         costButton = (Button)findViewById(R.id.cost_button_ID);
         proconButton = (Button)findViewById(R.id.procon_button_ID);
-        prop1title = (TextView)findViewById(R.id.prop1NameID);
-        prop2title = (TextView)findViewById(R.id.propName2ID);
-        prop3title = (TextView)findViewById(R.id.prop3NameID);
-        prop1answer = (TextView)findViewById(R.id.answer1ID);
-        prop2answer = (TextView)findViewById(R.id.answer2ID);
-        prop3answer = (TextView)findViewById(R.id.answer3ID);
     }
     private void initializeListeners(){
         noButton.setOnClickListener(new View.OnClickListener() {
@@ -156,14 +145,11 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
         }
     }
     private void goToLastPage(){
-        prop1title.setText(propTitles[0]);
-        prop2title.setText(propTitles[1]);
-        prop3title.setText(propTitles[2]);
-        prop1answer.setText(getAnswer(userAnswers.get(0)));
-        prop2answer.setText(getAnswer(userAnswers.get(1)));
-        prop3answer.setText(getAnswer(userAnswers.get(2)));
-        resultPage.setVisibility(View.VISIBLE);
-        origPage.setVisibility(View.INVISIBLE);
+        saveSharedPreferences();
+        Intent intent = new Intent(UnderstandingIssuesActivity.this,ResultActivity.class);
+        startActivity(intent);
+//        resultPage.setVisibility(View.VISIBLE);
+//        origPage.setVisibility(View.INVISIBLE);
     }
     private String getAnswer(int num){
         switch (num){
@@ -176,5 +162,13 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
             default:
                 return "?";
         }
+    }
+    private void saveSharedPreferences(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("PROP1", getAnswer(userAnswers.get(0)));
+        editor.putString("PROP2", getAnswer(userAnswers.get(1)));
+        editor.putString("PROP3", getAnswer(userAnswers.get(2)));
+        editor.commit();
     }
 }
