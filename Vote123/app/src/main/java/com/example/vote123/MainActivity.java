@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView titleTextView;
+    TextView titleTextView;
     TextView subTitleTextView;
     Button registerButton;
     Button pollingButton;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeViews(){
-        titleTextView = (ImageView) findViewById(R.id.main_title_imageView_id);
+        titleTextView = (TextView) findViewById(R.id.main_title_textView_id);
         subTitleTextView = (TextView) findViewById(R.id.main_subTitle_textView_id);
         registerButton = (Button) findViewById(R.id.main_register_button_id);
         pollingButton = (Button) findViewById(R.id.main_polling_button_id);
