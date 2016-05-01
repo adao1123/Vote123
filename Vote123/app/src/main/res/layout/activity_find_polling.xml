@@ -11,12 +11,12 @@
     tools:context="com.example.vote123.FindPollingActivity">
 
 
-
     <EditText
         android:id="@+id/editTextStreetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Street"/>
+
     <EditText
         android:id="@+id/editTextCity"
         android:layout_width="match_parent"
