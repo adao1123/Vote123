@@ -10,6 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.UnderstandingIssuesActivity">
 
+    <ImageView
+        android:id="@+id/exploreheader_id"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/exploreheader"/>
+
     <RelativeLayout
         android:id="@+id/original_page_ID"
         android:layout_width="match_parent"
@@ -48,13 +54,13 @@
                 android:id="@+id/cost_button_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cost"
+                android:background="@drawable/costs"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/procon_button_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pro/Con"
+                android:background="@drawable/procon"
                 android:layout_weight="1"/>
 
         </LinearLayout>
@@ -69,22 +75,22 @@
             android:layout_marginBottom="20dp">
             <Button
                 android:id="@+id/NO_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="NO"/>
+                android:background="@drawable/no"/>
             <Button
                 android:id="@+id/IDK_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="Undecided"/>
+                android:background="@drawable/question"/>
             <Button
                 android:id="@+id/YES_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="YES"/>
+                android:background="@drawable/yes"/>
         </LinearLayout>
     </RelativeLayout>
 

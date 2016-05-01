@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
     TextView prop1answer;
     TextView prop2answer;
     TextView prop3answer;
+    ImageView header;
     Button noButton;
     Button yesButton;
     Button idkButton;
@@ -57,6 +59,7 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
     }
 
     private void initializeViews(){
+        header = (ImageView) findViewById(R.id.exploreheader_id);
         origPage = (RelativeLayout)findViewById(R.id.original_page_ID);
         resultPage = (LinearLayout)findViewById(R.id.result_page_ID);
         textLayout = (RelativeLayout)findViewById(R.id.textLayoutID);
