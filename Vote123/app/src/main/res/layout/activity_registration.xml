@@ -10,10 +10,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.RegistrationActivity">
 
+    <ImageView
+        android:id="@+id/register_header_imageView_id"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/registerheader"
+        android:layout_alignParentTop="true"
+        />
+
     <WebView
         android:id="@+id/register_webView_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/register_header_imageView_id">
     </WebView>
 
 
@@ -27,25 +36,26 @@
         android:layout_alignParentBottom="true"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:visibility="invisible">
+        android:layout_centerHorizontal="true"
+        >
 
         <Button
             android:id="@+id/register_pollingStep_button_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next, Find Your Polling Place"
-            android:background="@android:color/transparent"
+            android:layout_width="275dp"
+            android:layout_height="50dp"
+            android:background="@drawable/findyourpollingplace"
             android:textColor="@color/white"
-            android:visibility="invisible"/>
+
+            />
 
         <Button
             android:id="@+id/register_share_button_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share"
-            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/sharered48"
             android:textColor="@color/white"
-            android:visibility="invisible"/>
+
+            />
     </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>

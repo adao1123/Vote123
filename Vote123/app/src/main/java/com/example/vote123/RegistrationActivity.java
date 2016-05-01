@@ -80,10 +80,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            if (view.getUrl()==url){ //was webview.getUrl()==doneRegisteringURL
-                toolbar.setVisibility(View.VISIBLE);
-                Toast.makeText(RegistrationActivity.this, "Congrats! You're officially registered to vote in the state of California.", Toast.LENGTH_LONG).show();
-            }
+//            if (view.getUrl()==url){ //was webview.getUrl()==doneRegisteringURL
+//                toolbar.setVisibility(View.VISIBLE);
+//                Toast.makeText(RegistrationActivity.this, "Congrats! You're officially registered to vote in the state of California.", Toast.LENGTH_LONG).show();
+//            }
             super.onPageFinished(view, url);
 
         }
