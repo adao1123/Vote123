@@ -2,7 +2,11 @@ package com.example.vote123;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
@@ -81,6 +85,11 @@ public class FindPollingActivity extends AppCompatActivity {
                         Log.i(TAG, "Input Address: " + inputedAddress);
                         Log.i(TAG, "Return Address: " + returnAddress);
                         textView.setText(returnAddress);
+                        SharedPreferences sharedPreferences = getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("POLLING_ADDRESS", returnAddress);
+                        editor.commit();
+
                     }
 
                     @Override

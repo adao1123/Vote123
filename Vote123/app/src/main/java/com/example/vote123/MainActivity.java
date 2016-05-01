@@ -1,9 +1,12 @@
 package com.example.vote123;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
         setButtons();
+        SharedPreferences sharedPreferences = getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        Log.i("Main", "onCreate:1 "+sharedPreferences.getString("PROP1", "DEFAULT MESSAGE"));
+        Log.i("Main", "onCreate:2 "+sharedPreferences.getString("PROP2", "DEFAULT MESSAGE"));
+        Log.i("Main", "onCreate:3 "+sharedPreferences.getString("PROP3", "DEFAULT MESSAGE"));
+
         setFonts();
 
 
@@ -68,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 }
