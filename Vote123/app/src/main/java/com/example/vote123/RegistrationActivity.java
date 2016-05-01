@@ -10,9 +10,11 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity {
+    ImageView header;
     WebView webView;
     CustomWebViewClient customWebViewClient;
     Toolbar toolbar;
@@ -41,6 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void initializeViews(){
+        header = (ImageView) findViewById(R.id.register_header_imageView_id);
         webView = (WebView) findViewById(R.id.register_webView_id);
         toolbar = (Toolbar) findViewById(R.id.register_toolbar_id);
         pollingButton = (Button) toolbar.findViewById(R.id.register_pollingStep_button_id);
@@ -80,10 +83,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            if (view.getUrl()==url){ //was webview.getUrl()==doneRegisteringURL
-                toolbar.setVisibility(View.VISIBLE);
-                Toast.makeText(RegistrationActivity.this, "Congrats! You're officially registered to vote in the state of California.", Toast.LENGTH_LONG).show();
-            }
+//            if (view.getUrl()==url){ //was webview.getUrl()==doneRegisteringURL
+//                toolbar.setVisibility(View.VISIBLE);
+//                Toast.makeText(RegistrationActivity.this, "Congrats! You're officially registered to vote in the state of California.", Toast.LENGTH_LONG).show();
+//            }
             super.onPageFinished(view, url);
 
         }
