@@ -10,20 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vote123.UnderstandingIssuesActivity">
 
+    <ImageView
+        android:id="@+id/exploreheader_id"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/exploreheader"/>
+
         <RelativeLayout
             android:id="@+id/textLayoutID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/exploreheader_id"
+            android:layout_marginTop="50dp"
             android:layout_weight="1">
             <TextView
                 android:id="@+id/question_TV_ID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/officialRed"
+                android:textAlignment="center"
+                />
             <TextView
                 android:id="@+id/cost_TV_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                android:textSize="20dp"
+                android:textColor="@color/officialBlue"
+                android:textAlignment="center"
+                />
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -31,27 +47,28 @@
                     android:id="@+id/procon_TV_ID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:textSize="20dp"
+                    android:textColor="@color/officialBlue"
+                    android:textAlignment="center"/>
             </ScrollView>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:layout_above="@+id/yesnobuttons"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/cost_button_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cost"
+                android:background="@drawable/costs"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/procon_button_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pro/Con"
+                android:background="@drawable/procon"
                 android:layout_weight="1"/>
 
         </LinearLayout>
@@ -59,29 +76,27 @@
         <LinearLayout
             android:id="@+id/yesnobuttons"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="bottom"
-            android:layout_alignParentBottom="true"
-            >
+            android:gravity="bottom">
+
             <Button
                 android:id="@+id/NO_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="NO"/>
+                android:background="@drawable/no"/>
             <Button
                 android:id="@+id/IDK_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="Undecided"/>
+                android:background="@drawable/question"/>
             <Button
                 android:id="@+id/YES_button_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:text="YES"/>
+                android:background="@drawable/yes"/>
         </LinearLayout>
 </LinearLayout>

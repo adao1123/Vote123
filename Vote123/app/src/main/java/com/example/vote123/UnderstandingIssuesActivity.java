@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
     TextView questionTV;
     TextView costTV;
     TextView proconTV;
+    ImageView header;
     Button noButton;
     Button yesButton;
     Button idkButton;
@@ -64,8 +66,7 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
     }
 
     private void initializeViews(){
-//        origPage = (RelativeLayout)findViewById(R.id.original_page_ID);
-//        resultPage = (LinearLayout)findViewById(R.id.result_page_ID);
+        header = (ImageView) findViewById(R.id.exploreheader_id);
         textLayout = (RelativeLayout)findViewById(R.id.textLayoutID);
         proconTV = (TextView)findViewById(R.id.procon_TV_ID);
         questionTV = (TextView)findViewById(R.id.question_TV_ID);

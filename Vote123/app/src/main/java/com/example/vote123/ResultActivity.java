@@ -5,9 +5,12 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
+
+    ImageView header;
 
     TextView prop1title;
     TextView prop2title;
@@ -37,6 +40,7 @@ public class ResultActivity extends AppCompatActivity {
 
 
         initializeViews();
+        header = (ImageView) findViewById(R.id.resultsHeader_id);
         propTitles = getResources().getStringArray(R.array.proptitles);
 
         prop1title.setText(propTitles[0]);
