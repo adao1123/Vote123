@@ -7,48 +7,49 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.vote123.MainActivity">
+    tools:context="com.example.vote123.MainActivity"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/main_title_textView_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Vote123"
-        android:textStyle="bold"/>
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/vote123logo"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/main_subTitle_textView_id"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voting Made Easy | California Edition"
-        android:layout_below="@+id/main_title_textView_id"/>
+        android:text="Voting Made Easy | California"
+        android:textColor="@color/officialBlue"
+        android:layout_below="@+id/main_title_textView_id"
+        android:textAlignment="center"/>
 
     <Button
+        android:layout_marginBottom="20dp"
         android:id="@+id/main_register_button_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register to Vote"
-        android:layout_below="@+id/main_subTitle_textView_id"/>
+        android:layout_below="@+id/main_subTitle_textView_id"
+        android:background="@drawable/registertovote"/>
 
     <Button
         android:id="@+id/main_polling_button_id"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Your Polling Place"
-        android:layout_below="@+id/main_register_button_id"/>
-
-    <Button
-        android:id="@+id/main_quickRef_button_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quick Reference"
-        android:layout_below="@+id/main_polling_button_id"/>
+        android:layout_below="@+id/main_register_button_id"
+        android:background="@drawable/findyourpollingplace"/>
 
     <Button
         android:id="@+id/main_issues_button_id"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Understanding the Issues"
-        android:layout_below="@+id/main_quickRef_button_id"/>
+        android:layout_below="@+id/main_polling_button_id"
+        android:background="@drawable/exploretheissues"/>
 
 </RelativeLayout>

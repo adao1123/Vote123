@@ -3,6 +3,7 @@ package com.example.vote123;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +50,17 @@ public class UnderstandingIssuesActivity extends AppCompatActivity {
         initializeViews();
         initializeListeners();
         nextQuestion();
+        setFonts();
+    }
+
+
+
+    private void setFonts(){
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "DIN_Neuzeit_Grotesk_W01_Bold.ttf");
+        questionTV.setTypeface(typeface);
+        proconTV.setTypeface(typeface);
+        costTV.setTypeface(typeface);
+
     }
 
     private void initializeViews(){
