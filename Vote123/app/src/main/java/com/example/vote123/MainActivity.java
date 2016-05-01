@@ -1,10 +1,12 @@
 package com.example.vote123;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     TextView subTitleTextView;
     Button registerButton;
     Button pollingButton;
-    Button quickRefButton;
     Button issuesButton;
 
 
@@ -24,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
         setButtons();
+        setFonts();
+
+
+    }
+
+    private void setFonts(){
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "DIN_Neuzeit_Grotesk_W01_Bold.ttf");
+        subTitleTextView.setTypeface(typeface);
     }
 
     private void initializeViews(){
