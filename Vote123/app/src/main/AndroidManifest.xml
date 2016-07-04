@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".RegistrationActivity"> </activity>
         <activity android:name=".FindPollingActivity" />
-        <activity android:name=".QuickReferenceActivity" />
         <activity android:name=".UnderstandingIssuesActivity" />
         <activity android:name=".ResultActivity"></activity>
     </application>
