@@ -11,52 +11,60 @@
     tools:context="com.example.vote123.FindPollingActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editTextStreetName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Street"/>
-        <EditText
-            android:id="@+id/editTextCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="City"/>
-        <EditText
-            android:id="@+id/editTextState"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="State"/>
-        <EditText
-            android:id="@+id/editTextZip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Zip Code"/>
-        <Button
-            android:id="@+id/buttonID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Find Polling Place"/>
-        <TextView
-            android:textSize="20dp"
-            android:id="@+id/pollingAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/pollingHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/pollingheader"/>
 
-        <Button
-            android:text="set election day to Calendar"
-            android:id="@+id/add_election_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/editTextStreetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Street"/>
 
-        <Button
-            android:text="Share all set to vote"
-            android:id="@+id/registered_shareButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="City"/>
+    <EditText
+        android:id="@+id/editTextState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="State"/>
+    <EditText
+        android:id="@+id/editTextZip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Zip Code"/>
+
+    <Button
+        android:id="@+id/buttonID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/submit"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:background="@drawable/addtocal"
+        android:id="@+id/add_election_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/registered_shareButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sharelong"
+        android:layout_marginBottom="10dp"/>
+
     </LinearLayout>
 
 </ScrollView>
