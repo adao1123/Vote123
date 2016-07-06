@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+/**
+ * This is the new main activity.
+ */
 public class NaviActivity extends AppCompatActivity {
     private static final String TAG = "NaviActivity";
     private FragmentManager fragmentManager;
@@ -17,7 +20,6 @@ public class NaviActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
-    private SplashFragment splashFragment;
     private SelectFragment selectFragment;
     private MyBallotFragment myBallotFragment;
     private RegisterFragment registerFragment;
@@ -32,7 +34,10 @@ public class NaviActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navi);
         initializeViews();
         initializeFragments();
+
+        if(savedInstanceState == null){
         setInitialFragment();
+        }
     }
 
     /**
@@ -49,11 +54,11 @@ public class NaviActivity extends AppCompatActivity {
     }
 
     /**
-     * This method sets the intiail fragment.
+     * This method setup the initial fragment displayed when the app launches.
      */
     private void setInitialFragment(){
         setFragmentLogistics();
-        fragmentTransaction.add(R.id.navi_container_id, myBallotFragment);
+        fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -62,7 +67,6 @@ public class NaviActivity extends AppCompatActivity {
      * This method initializes all the fragments used in this activity.
      */
     private void initializeFragments(){
-        splashFragment = new SplashFragment();
         selectFragment = new SelectFragment();
         myBallotFragment = new MyBallotFragment();
         registerFragment = new RegisterFragment();
@@ -99,27 +103,33 @@ public class NaviActivity extends AppCompatActivity {
      * @param menuItem
      */
     public void selectDrawerItem(MenuItem menuItem){
+        setFragmentLogistics();
         switch (menuItem.getItemId()){
             case R.id.drawer_register_id:
                 fragmentTransaction.replace(R.id.navi_container_id, registerFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_polling_id:
                 fragmentTransaction.replace(R.id.navi_container_id, pollingFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_calendar_id:
                 fragmentTransaction.replace(R.id.navi_container_id, calendarFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_explore_id:
                 fragmentTransaction.replace(R.id.navi_container_id, exploreFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_my_ballot_id:
                 fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_select_id:
                 fragmentTransaction.replace(R.id.navi_container_id, selectFragment);
+                fragmentTransaction.commit();
                 break;
         }
-        fragmentTransaction.commit();
         menuItem.setChecked(true);
         //setTitle(menuItem.getTitle());
         drawer.closeDrawers();
