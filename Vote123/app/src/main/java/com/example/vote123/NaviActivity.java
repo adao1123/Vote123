@@ -34,6 +34,7 @@ public class NaviActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navi);
         initializeViews();
         initializeFragments();
+
         if(savedInstanceState == null){
         setInitialFragment();
         }
@@ -102,7 +103,7 @@ public class NaviActivity extends AppCompatActivity {
      * @param menuItem
      */
     public void selectDrawerItem(MenuItem menuItem){
-//        setFragmentLogistics();
+        setFragmentLogistics();
         switch (menuItem.getItemId()){
             case R.id.drawer_register_id:
                 fragmentTransaction.replace(R.id.navi_container_id, registerFragment);
