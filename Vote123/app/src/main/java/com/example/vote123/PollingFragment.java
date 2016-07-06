@@ -1,6 +1,6 @@
 package com.example.vote123;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,22 +15,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.analytics.HitBuilders;
+
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Billy on 7/3/16.
- */
-public class PollPlaceFragmentTwo extends Fragment {
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PollingFragment extends Fragment {
     private TextView infoText;
     private TextView addressText;
     private EditText streetEdit;
@@ -68,15 +64,15 @@ public class PollPlaceFragmentTwo extends Fragment {
     }
 
 
-    private void setViews(View v){
-        addressText = (TextView)v.findViewById(R.id.pollTwo_addressStreet_ID);
-        infoText = (TextView)v.findViewById(R.id.pollTwo_text_ID);
-        streetEdit = (EditText)v.findViewById(R.id.pollTwo_streetEdit_id);
-        cityEdit = (EditText)v.findViewById(R.id.pollTwo_cityEdit_id);
-        stateEdit = (EditText)v.findViewById(R.id.pollTwo_stateEdit_id);
-        zipEdit = (EditText)v.findViewById(R.id.pollTwo_zipEdit_id);
-        submitButton = (Button)v.findViewById(R.id.pollTwo_submitButton_ID);
-        directionButton = (Button)v.findViewById(R.id.direction_button_ID);
+    private void setViews(View v) {
+        addressText = (TextView) v.findViewById(R.id.pollTwo_addressStreet_ID);
+        infoText = (TextView) v.findViewById(R.id.pollTwo_text_ID);
+        streetEdit = (EditText) v.findViewById(R.id.pollTwo_streetEdit_id);
+        cityEdit = (EditText) v.findViewById(R.id.pollTwo_cityEdit_id);
+        stateEdit = (EditText) v.findViewById(R.id.pollTwo_stateEdit_id);
+        zipEdit = (EditText) v.findViewById(R.id.pollTwo_zipEdit_id);
+        submitButton = (Button) v.findViewById(R.id.pollTwo_submitButton_ID);
+        directionButton = (Button) v.findViewById(R.id.direction_button_ID);
     }
 
     private void buttonListener() {
@@ -86,20 +82,15 @@ public class PollPlaceFragmentTwo extends Fragment {
                 if (streetEdit.getText().toString().isEmpty() && cityEdit.getText().toString().isEmpty()
                         && stateEdit.getText().toString().isEmpty() && zipEdit.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Please enter all field", Toast.LENGTH_SHORT).show();
-                }
-                else if (streetEdit.getText().toString().isEmpty()) {
+                } else if (streetEdit.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Please enter street field", Toast.LENGTH_SHORT).show();
-                }
-                else if (cityEdit.getText().toString().isEmpty()) {
+                } else if (cityEdit.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Please enter city field", Toast.LENGTH_SHORT).show();
-                }
-                else if (stateEdit.getText().toString().isEmpty()) {
+                } else if (stateEdit.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Please enter state field", Toast.LENGTH_SHORT).show();
-                }
-                else if (zipEdit.getText().toString().isEmpty()) {
+                } else if (zipEdit.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Please enter zip field", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     inputedAddress = streetEdit.getText().toString() + " " + cityEdit.getText() + " " + stateEdit.getText() + " " + zipEdit.getText();
                     Call<AddressData> call = service.getAddressInfo(inputedAddress, API_KEY, ELECTION_ID);
                     call.enqueue(new Callback<AddressData>() {
@@ -121,6 +112,7 @@ public class PollPlaceFragmentTwo extends Fragment {
 //                        pollAddressBundle.putString(POLL_ADDRESS_ID, returnAddress);
 
                         }
+
                         @Override
                         public void onFailure(Call<AddressData> call, Throwable t) {
                         }
@@ -130,15 +122,15 @@ public class PollPlaceFragmentTwo extends Fragment {
         });
     }
 
-    private void setGoogleMapClicker(){
+    private void setGoogleMapClicker() {
         directionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-            Uri gmmIntentUri = Uri.parse("geo:40.591874, -98.813442 ?q=" + Uri.encode(returnAddress));
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            startActivity(mapIntent);
+                Uri gmmIntentUri = Uri.parse("geo:40.591874, -98.813442 ?q=" + Uri.encode(returnAddress));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
 
 //                Fragment pollMapFrag = new PollMapsFragment();
 //                pollMapFrag.setArguments(pollAddressBundle);
@@ -150,5 +142,4 @@ public class PollPlaceFragmentTwo extends Fragment {
         });
 
     }
-
 }

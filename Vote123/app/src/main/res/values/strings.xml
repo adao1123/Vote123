@@ -62,5 +62,10 @@
         <item>Condoms in Pornographic Films Initiative</item>
         <item>Drug Price Relief Initiative</item>
     </string-array>
+
     <string name="title_activity_poll_maps">Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
