@@ -11,7 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,7 +24,16 @@ import com.firebase.client.Firebase;
  */
 public class ExploreFragment extends Fragment {
 
-    Firebase firebaseRef;
+    private static final String TAG = "EXPLORE";
+    private Firebase firebaseRef;
+    private Firebase firebaseState;
+    private Firebase firebaseQuestions;
+    private Firebase firebaseQuestion;
+    private String selectedState;
+    private long numQuestions;
+    private ArrayList<String> questionArray;
+    private ArrayList<String> costArray;
+    private ArrayList<String> proconArray;
 
     public ExploreFragment() {
         // Required empty public constructor
@@ -36,14 +50,97 @@ public class ExploreFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getSelectedState();
+        manageFirebase();
+    }
+
+    private String getSelectedState(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
         Log.i("Result", "onCreate:1 " + sharedPreferences.getString("STATE", "DEFAULT MESSAGE"));
+//        if (sharedPreferences.getString("STATE","Default")!=null)
+        selectedState = sharedPreferences.getString("STATE","DEFAULT");
+        return selectedState;
+    }
 
+    private void manageFirebase(){
+        initFirebase();
+        getNumQuestions();
+//        addQuestion();
     }
 
     private void initFirebase(){
         firebaseRef = new Firebase("https://123vote.firebaseio.com/");
-//        firebaseShops = firebaseRef.child("Shops");
+        firebaseState = firebaseRef.child(selectedState);
+        firebaseQuestions = firebaseState.child("Question");
+    }
+
+    private void addQuestion(){
+        firebaseQuestion = firebaseQuestions.child("1");
+        firebaseQuestion.setValue("Question1");
+        firebaseQuestion.child("Cost").setValue("cost");
+        firebaseQuestion.child("Procon").setValue("procon");
+    }
+
+    private void getNumQuestions(){
+        firebaseQuestions.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                numQuestions = dataSnapshot.getChildrenCount();
+                Log.i(TAG, "onDataChange: "+numQuestions);
+                makeStringLists();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    private void makeStringLists(){
+        questionArray = new ArrayList<>();
+        costArray = new ArrayList<>();
+        proconArray = new ArrayList<>();
+        for (int i = 1; i<=numQuestions; i++){
+            firebaseQuestions.child(i+"").child("Prompt").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    questionArray.add((String)dataSnapshot.getValue());
+                    Log.i(TAG, "Question 1: " + questionArray.get(0));
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+            firebaseQuestions.child(i+"").child("Cost").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    costArray.add((String)dataSnapshot.getValue());
+                    Log.i(TAG, "Cost 1: " + costArray.get(0));
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+            firebaseQuestions.child(i+"").child("Procon").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    proconArray.add((String)dataSnapshot.getValue());
+                    Log.i(TAG, "Procon 1: " + proconArray.get(0));
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+
+        }
+        Log.i(TAG, "makeStringLists: ");
     }
 
 }
