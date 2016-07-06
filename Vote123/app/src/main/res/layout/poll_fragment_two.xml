@@ -31,24 +31,12 @@
             <TextView
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text="123 Main St"
+                android:text="Enter your address below"
                 android:id="@+id/pollTwo_addressStreet_ID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"/>
 
-            <TextView
-                android:gravity="center"
-                android:text="San Francisco, CA "
-                android:id="@+id/pollTwo_addressCity_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:gravity="center"
-                android:text=" "
-                android:id="@+id/pollTwo_addressZip_ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -56,6 +44,7 @@
 
 
     <EditText
+        android:layout_marginTop="15dp"
         android:id="@+id/pollTwo_streetEdit_id"
         android:gravity="center"
         android:hint="Street"
@@ -70,12 +59,18 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/pollTwo_stateEdit_id"
+        android:gravity="center"
+        android:hint="State"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
         android:id="@+id/pollTwo_zipEdit_id"
         android:gravity="center"
         android:hint="Zip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
     <Button
         android:text="Submit"

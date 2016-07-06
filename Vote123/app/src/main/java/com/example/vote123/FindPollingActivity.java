@@ -61,7 +61,7 @@ public class FindPollingActivity extends AppCompatActivity {
         editState = (EditText)findViewById(R.id.editTextState);
         editZip = (EditText)findViewById(R.id.editTextZip);
         button = (Button)findViewById(R.id.buttonID);
-        textView = (TextView)findViewById(R.id.pollingAddress);
+        textView = (TextView)findViewById(R.id.pollingAddressID);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.googleapis.com/civicinfo/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
