@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.client.Firebase;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ExploreFragment extends Fragment {
 
+    Firebase firebaseRef;
 
     public ExploreFragment() {
         // Required empty public constructor
@@ -24,6 +27,11 @@ public class ExploreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explore, container, false);
+    }
+
+    private void initFirebase(){
+        firebaseRef = new Firebase("https://123vote.firebaseio.com/");
+//        firebaseShops = firebaseRef.child("Shops");
     }
 
 }
