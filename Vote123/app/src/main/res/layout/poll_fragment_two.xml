@@ -37,6 +37,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"/>
 
+            <Button
+                android:layout_gravity="center"
+                android:text="Open Map"
+                android:visibility="gone"
+                android:id="@+id/direction_button_ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

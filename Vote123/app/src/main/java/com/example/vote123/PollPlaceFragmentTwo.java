@@ -1,11 +1,14 @@
 package com.example.vote123;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,11 +41,15 @@ public class PollPlaceFragmentTwo extends Fragment {
     private EditText stateEdit;
     private EditText zipEdit;
     private Button submitButton;
+    private Button directionButton;
     private CivicInfoApiService service;
     private String inputedAddress;
     private String returnAddress;
     private static final String API_KEY = "AIzaSyBAy7FDJ0OB6tB1TjKkubsVr24qk9qxxUQ";
     private static final String ELECTION_ID = "2000";
+    public static final String POLL_ADDRESS_ID = "Poll Address";
+    Bundle pollAddressBundle;
+    GoogleApiClient mGoogleApiClient;
 
     @Nullable
     @Override
@@ -51,8 +64,13 @@ public class PollPlaceFragmentTwo extends Fragment {
         service = retrofit.create(CivicInfoApiService.class);
 
         buttonListener();
-
+        setGoogleMapClicker();
         return v;
+    }
+
+
+    private void setGoogleMap(){
+
     }
 
     private void setViews(View v){
@@ -63,6 +81,7 @@ public class PollPlaceFragmentTwo extends Fragment {
         stateEdit = (EditText)v.findViewById(R.id.pollTwo_stateEdit_id);
         zipEdit = (EditText)v.findViewById(R.id.pollTwo_zipEdit_id);
         submitButton = (Button)v.findViewById(R.id.pollTwo_submitButton_ID);
+        directionButton = (Button)v.findViewById(R.id.direction_button_ID);
     }
 
     private void buttonListener() {
@@ -86,6 +105,11 @@ public class PollPlaceFragmentTwo extends Fragment {
                         editor.putString("POLLING_ADDY", returnAddress);
                         editor.commit();
 
+                        
+//                        pollAddressBundle = new Bundle();
+//                        pollAddressBundle.putString(POLL_ADDRESS_ID, returnAddress);
+//                        directionButton.setVisibility(View.VISIBLE);
+
                     }
 
                     @Override
@@ -95,6 +119,31 @@ public class PollPlaceFragmentTwo extends Fragment {
                 });
             }
         });
+    }
+
+    private void setGoogleMapClicker(){
+        directionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Create a Uri from an intent string. Use the result to create an Intent.
+                Uri gmmIntentUri = Uri.parse("geo:37.801239,-122.258301 ?q=" + Uri.encode(returnAddress));
+
+                // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                // Make the Intent explicit by setting the Google Maps package
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+
+//                Fragment pollMapFrag = new PollMapsFragment();
+//                pollMapFrag.setArguments(pollAddressBundle);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.addToBackStack(null);
+//                transaction.replace(R.id.frag_container_ID, pollMapFrag);
+//                transaction.commit();
+            }
+        });
+
     }
 
 }
