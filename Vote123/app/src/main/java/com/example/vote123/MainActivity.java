@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         setFonts();
 
-
     }
 
     private void setFonts(){
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         pollingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FindPollingActivity.class);
+                Intent intent = new Intent(MainActivity.this, PollingActivity.class);
                 startActivity(intent);
             }
         });
