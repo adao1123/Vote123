@@ -9,21 +9,30 @@ import android.view.ViewGroup;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment displays a webview that allows the user to register to vote in their state.
  */
 public class RegisterFragment extends Fragment {
 
 
+    /**
+     * Required empty public constructor.
+     */
     public RegisterFragment() {
-        // Required empty public constructor
     }
 
-
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View v = inflater.inflate(R.layout.fragment_register, container, false);
+
+        return v;
     }
 
 }

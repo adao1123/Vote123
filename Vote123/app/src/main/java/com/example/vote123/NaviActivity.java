@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+/**
+ * This is the new main activity.
+ */
 public class NaviActivity extends AppCompatActivity {
     private static final String TAG = "NaviActivity";
     private FragmentManager fragmentManager;
@@ -17,7 +20,6 @@ public class NaviActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
-    private SplashFragment splashFragment;
     private SelectFragment selectFragment;
     private MyBallotFragment myBallotFragment;
     private RegisterFragment registerFragment;
@@ -51,7 +53,7 @@ public class NaviActivity extends AppCompatActivity {
     }
 
     /**
-     * This method sets the intiail fragment.
+     * This method setup the initial fragment displayed when the app launches.
      */
     private void setInitialFragment(){
         setFragmentLogistics();
@@ -64,7 +66,6 @@ public class NaviActivity extends AppCompatActivity {
      * This method initializes all the fragments used in this activity.
      */
     private void initializeFragments(){
-        splashFragment = new SplashFragment();
         selectFragment = new SelectFragment();
         myBallotFragment = new MyBallotFragment();
         registerFragment = new RegisterFragment();
