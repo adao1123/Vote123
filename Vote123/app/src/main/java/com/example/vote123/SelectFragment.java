@@ -1,12 +1,16 @@
 package com.example.vote123;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -14,9 +18,11 @@ import android.widget.Spinner;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectFragment extends Fragment {
+public class SelectFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    Spinner spinner;
+    private static final String TAG = "SELECT FRAGMENT";
+    private Spinner spinner;
+    private String selectedState;
 
     public SelectFragment() {
         // Required empty public constructor
@@ -42,5 +48,26 @@ public class SelectFragment extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.states_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedState = (String)parent.getItemAtPosition(position);
+        Log.i(TAG, "onItemSelected: "+ selectedState);
+        saveStateToPref();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        Log.i(TAG, "onNothingSelected: ");
+    }
+
+    private void saveStateToPref(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("STATE",selectedState);
+        editor.commit();
+
     }
 }
