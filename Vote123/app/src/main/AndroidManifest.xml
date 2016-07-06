@@ -15,18 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RegistrationActivity"></activity>
         <activity android:name=".FindPollingActivity" />
         <activity android:name=".QuickReferenceActivity" />
         <activity android:name=".UnderstandingIssuesActivity" />
         <activity android:name=".ResultActivity" />
-        <activity android:name=".NaviActivity"></activity>
+        <activity android:name=".NaviActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

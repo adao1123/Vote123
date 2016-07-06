@@ -6,9 +6,5 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:layout_marginLeft">@dimen/standard</item>
-        <item name="android:layout_marginRight">@dimen/standard</item>
-        <item name="android:layout_marginBottom">@dimen/standard</item>
-        <item name="android:layout_marginTop">@dimen/standard</item>
     </style>
 </resources>

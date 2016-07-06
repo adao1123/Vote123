@@ -24,6 +24,7 @@ public class NaviActivity extends AppCompatActivity {
     private PollingFragment pollingFragment;
     private ExploreFragment exploreFragment;
     private CalendarFragment calendarFragment;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +32,30 @@ public class NaviActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navi);
         initializeViews();
         initializeFragments();
+        setInitialFragment();
     }
 
     /**
      * This method initializes all the views within the activity.
      */
     private void initializeViews(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout_id);
         drawerToggle = setupDrawerToggle();
         drawer.addDrawerListener(drawerToggle);
         navigationView = (NavigationView) findViewById(R.id.nvView_id);
         setUpDrawerContent(navigationView);
+    }
+
+    /**
+     * This method sets the intiail fragment.
+     */
+    private void setInitialFragment(){
+        setFragmentLogistics();
+        fragmentTransaction.add(R.id.navi_container_id, myBallotFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     /**
@@ -62,7 +76,7 @@ public class NaviActivity extends AppCompatActivity {
      * @return
      */
     private ActionBarDrawerToggle setupDrawerToggle(){
-        return new ActionBarDrawerToggle(this, drawer, null, R.string.drawer_open, R.string.drawer_close);
+        return new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
     }
 
     /**
@@ -85,8 +99,6 @@ public class NaviActivity extends AppCompatActivity {
      * @param menuItem
      */
     public void selectDrawerItem(MenuItem menuItem){
-        setFragmentLogistics();
-        fragmentTransaction.addToBackStack(null);
         switch (menuItem.getItemId()){
             case R.id.drawer_register_id:
                 fragmentTransaction.replace(R.id.navi_container_id, registerFragment);
