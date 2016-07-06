@@ -34,7 +34,10 @@ public class NaviActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navi);
         initializeViews();
         initializeFragments();
+
+        if(savedInstanceState == null){
         setInitialFragment();
+        }
     }
 
     /**
@@ -55,7 +58,7 @@ public class NaviActivity extends AppCompatActivity {
      */
     private void setInitialFragment(){
         setFragmentLogistics();
-        fragmentTransaction.add(R.id.navi_container_id, myBallotFragment);
+        fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -100,27 +103,33 @@ public class NaviActivity extends AppCompatActivity {
      * @param menuItem
      */
     public void selectDrawerItem(MenuItem menuItem){
+        setFragmentLogistics();
         switch (menuItem.getItemId()){
             case R.id.drawer_register_id:
                 fragmentTransaction.replace(R.id.navi_container_id, registerFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_polling_id:
                 fragmentTransaction.replace(R.id.navi_container_id, pollingFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_calendar_id:
                 fragmentTransaction.replace(R.id.navi_container_id, calendarFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_explore_id:
                 fragmentTransaction.replace(R.id.navi_container_id, exploreFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_my_ballot_id:
                 fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.drawer_select_id:
                 fragmentTransaction.replace(R.id.navi_container_id, selectFragment);
+                fragmentTransaction.commit();
                 break;
         }
-        fragmentTransaction.commit();
         menuItem.setChecked(true);
         //setTitle(menuItem.getTitle());
         drawer.closeDrawers();

@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,16 +18,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Calendar;
 import java.util.TimeZone;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import timber.log.Timber;
 
 public class FindPollingActivity extends AppCompatActivity {
 
@@ -63,7 +61,7 @@ public class FindPollingActivity extends AppCompatActivity {
         editState = (EditText)findViewById(R.id.editTextState);
         editZip = (EditText)findViewById(R.id.editTextZip);
         button = (Button)findViewById(R.id.buttonID);
-        textView = (TextView)findViewById(R.id.pollingAddress);
+        textView = (TextView)findViewById(R.id.pollingAddressID);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.googleapis.com/civicinfo/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
