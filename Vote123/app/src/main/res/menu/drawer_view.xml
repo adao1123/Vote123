@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_register_id"
+            android:icon="@drawable/usa-48"
+            android:title="My Sitters"/>
+        <item
+            android:id="@+id/drawer_polling_id"
+            android:icon="@drawable/usa-48"
+            android:title="Logout"/>
+        <item
+            android:id="@+id/drawer_calendar_id"
+            android:icon="@drawable/usa-48"
+            android:title="Logout"/>
+        <item
+            android:id="@+id/drawer_explore_id"
+            android:icon="@drawable/usa-48"
+            android:title="Logout"/>
+        <item
+            android:id="@+id/drawer_my_ballot_id"
+            android:icon="@drawable/usa-48"
+            android:title="Logout"/>
+
+        <item android:title="Setting">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/drawer_select_id"
+                        android:icon="@drawable/usa-48"
+                        android:title="Change State"/>
+                </group>
+
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
