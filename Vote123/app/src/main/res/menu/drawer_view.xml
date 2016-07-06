@@ -5,25 +5,25 @@
         <item
             android:id="@+id/drawer_register_id"
             android:icon="@drawable/usa_48"
-            android:title="My Sitters"/>
+            android:title="Register to Vote"/>
         <item
             android:id="@+id/drawer_polling_id"
             android:icon="@drawable/usa_48"
-            android:title="Logout"/>
+            android:title="Find Your Polling Place"/>
         <item
             android:id="@+id/drawer_calendar_id"
             android:icon="@drawable/usa_48"
-            android:title="Logout"/>
+            android:title="Add to Calendar"/>
         <item
             android:id="@+id/drawer_explore_id"
             android:icon="@drawable/usa_48"
-            android:title="Logout"/>
+            android:title="Explore the Ballot"/>
         <item
             android:id="@+id/drawer_my_ballot_id"
             android:icon="@drawable/usa_48"
-            android:title="Logout"/>
+            android:title="My Ballot"/>
 
-        <item android:title="Setting">
+        <item android:title="Settings">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
@@ -35,6 +35,4 @@
             </menu>
         </item>
     </group>
-
-
 </menu>
