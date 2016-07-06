@@ -18,6 +18,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
+/**
+ * currently not using atm. it's saved for making google map work inside the app for future version
+ */
+
 public class PollMapsFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;

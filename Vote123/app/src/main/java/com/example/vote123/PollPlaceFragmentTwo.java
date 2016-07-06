@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -69,10 +70,6 @@ public class PollPlaceFragmentTwo extends Fragment {
     }
 
 
-    private void setGoogleMap(){
-
-    }
-
     private void setViews(View v){
         addressText = (TextView)v.findViewById(R.id.pollTwo_addressStreet_ID);
         infoText = (TextView)v.findViewById(R.id.pollTwo_text_ID);
@@ -88,35 +85,49 @@ public class PollPlaceFragmentTwo extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inputedAddress = streetEdit.getText().toString() + " " + cityEdit.getText() + " " + stateEdit.getText() + " " + zipEdit.getText();
-                Call<AddressData> call = service.getAddressInfo(inputedAddress, API_KEY, ELECTION_ID);
-                call.enqueue(new Callback<AddressData>() {
-                    @Override
-                    public void onResponse(Call<AddressData> call, Response<AddressData> response) {
-                        if (response.body().getPollingLocations()[0] == null) return;
-                        AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
-                        AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
-                        returnAddress = pollingAddress.getAddressStreet() + "\n " + pollingAddress.getAddressCity() + " " + pollingAddress.getAddressState() + " " + pollingAddress.getAddressZip();
-                        inputedAddress = inputedAddress.toUpperCase();
-                        returnAddress = returnAddress.toUpperCase();
-                        addressText.setText(returnAddress);
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("POLLING_ADDY", returnAddress);
-                        editor.commit();
-
-                        
+                if (streetEdit.getText().toString().isEmpty() && cityEdit.getText().toString().isEmpty() && stateEdit.getText().toString().isEmpty()
+                        && zipEdit.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter all field", Toast.LENGTH_SHORT).show();
+                }
+                else if (streetEdit.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter street field", Toast.LENGTH_SHORT).show();
+                }
+                else if (cityEdit.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter city field", Toast.LENGTH_SHORT).show();
+                }
+                else if (stateEdit.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter state field", Toast.LENGTH_SHORT).show();
+                }
+                else if (zipEdit.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please enter zip field", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    inputedAddress = streetEdit.getText().toString() + " " + cityEdit.getText() + " " + stateEdit.getText() + " " + zipEdit.getText();
+                    Call<AddressData> call = service.getAddressInfo(inputedAddress, API_KEY, ELECTION_ID);
+                    call.enqueue(new Callback<AddressData>() {
+                        @Override
+                        public void onResponse(Call<AddressData> call, Response<AddressData> response) {
+                            if (response.body().getPollingLocations()[0] == null) return;
+                            AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
+                            AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
+                            returnAddress = pollingAddress.getAddressStreet() + "\n " + pollingAddress.getAddressCity() + " " + pollingAddress.getAddressState() + " " + pollingAddress.getAddressZip();
+                            inputedAddress = inputedAddress.toUpperCase();
+                            returnAddress = returnAddress.toUpperCase();
+                            addressText.setText(returnAddress);
+                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("POLLING_ADDY", returnAddress);
+                            editor.commit();
+                            directionButton.setVisibility(View.VISIBLE);
 //                        pollAddressBundle = new Bundle();
 //                        pollAddressBundle.putString(POLL_ADDRESS_ID, returnAddress);
-//                        directionButton.setVisibility(View.VISIBLE);
 
-                    }
-
-                    @Override
-                    public void onFailure(Call<AddressData> call, Throwable t) {
-
-                    }
-                });
+                        }
+                        @Override
+                        public void onFailure(Call<AddressData> call, Throwable t) {
+                        }
+                    });
+                }
             }
         });
     }
@@ -126,14 +137,10 @@ public class PollPlaceFragmentTwo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // Create a Uri from an intent string. Use the result to create an Intent.
-                Uri gmmIntentUri = Uri.parse("geo:37.801239,-122.258301 ?q=" + Uri.encode(returnAddress));
-
-                // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                // Make the Intent explicit by setting the Google Maps package
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
+            Uri gmmIntentUri = Uri.parse("geo:37.801239,-122.258301 ?q=" + Uri.encode(returnAddress));
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
 
 //                Fragment pollMapFrag = new PollMapsFragment();
 //                pollMapFrag.setArguments(pollAddressBundle);
