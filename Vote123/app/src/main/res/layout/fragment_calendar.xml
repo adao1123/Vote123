@@ -1,13 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.vote123.CalendarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:background="@drawable/banner1"
+        android:id="@+id/calendar_image_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="100dp"
+        android:text="Calendar"
+        android:textSize="20sp"
+        android:gravity="center" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/calendar_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add election day to your calendar"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/add_button_calender_id"
+        android:text="Add to Calendar"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

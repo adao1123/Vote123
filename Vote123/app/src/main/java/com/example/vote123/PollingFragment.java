@@ -49,7 +49,7 @@ public class PollingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.poll_fragment_two, container, false);
+        View v = inflater.inflate(R.layout.fragment_polling, container, false);
         setViews(v);
         setRetainInstance(true);
         Retrofit retrofit = new Retrofit.Builder()
@@ -105,7 +105,7 @@ public class PollingFragment extends Fragment {
                             addressText.setText(returnAddress);
                             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("POLLING_ADDY", returnAddress);
+                            editor.putString(POLL_ADDRESS_ID, returnAddress);
                             editor.commit();
                             directionButton.setVisibility(View.VISIBLE);
 //                        pollAddressBundle = new Bundle();
