@@ -105,7 +105,7 @@ public class PollingFragment extends Fragment {
                             addressText.setText(returnAddress);
                             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("POLLING_ADDY", returnAddress);
+                            editor.putString(POLL_ADDRESS_ID, returnAddress);
                             editor.commit();
                             directionButton.setVisibility(View.VISIBLE);
 //                        pollAddressBundle = new Bundle();
