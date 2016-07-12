@@ -25,7 +25,6 @@
         android:layout_below="@+id/register_header_imageView_id">
     </WebView>
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/register_toolbar_id"
         android:layout_width="match_parent"
