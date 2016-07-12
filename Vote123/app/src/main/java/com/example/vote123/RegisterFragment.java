@@ -1,13 +1,22 @@
 package com.example.vote123;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 
 /**
@@ -15,9 +24,16 @@ import com.firebase.client.Firebase;
  */
 public class RegisterFragment extends Fragment {
     private static final String TAG = "RegisterFragment";
+    // private final String URL = "http://registertovote.ca.gov"; this is the CA registration url
+    private static final String DEFAULT = "Hogwarts";
     private Firebase rootFbRef;
     private Firebase stateFbRef;
     private Firebase chosenStateFbRef;
+    private WebView webView;
+    private CustomWebViewClient webViewClient;
+    private SharedPreferences sharedPreferences;
+    private String stateSelected;
+    private String registrationURL;
 
 
     /**
@@ -37,10 +53,58 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
-
+        initializeViews(v);
+        getState();
+        setFbRefs();
+        setWebView();
         return v;
     }
 
+    private void initializeViews(View v){
+        webView = (WebView) v.findViewById(R.id.register_webView_id);
+    }
+
+    private void getState(){
+        sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        stateSelected = sharedPreferences.getString("STATE", DEFAULT);
+        if(stateSelected.equals(DEFAULT)){
+            Log.i(TAG, "getState: no state was found");
+        } else{
+            Log.i(TAG, "getState: state selected by user is " + stateSelected);
+        }
+
+    }
+
+    private void setFbRefs(){
+        rootFbRef = new Firebase("");
+        stateFbRef = rootFbRef.child("state"); //make sure this is correct
+        chosenStateFbRef = stateFbRef.child(stateSelected);
+        chosenStateFbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                registrationURL = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    private void setWebView(){
+        webViewClient = new CustomWebViewClient();
+        webView.setWebViewClient(webViewClient);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(registrationURL);
+    }
+
+    private class CustomWebViewClient extends WebViewClient{
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return super.shouldOverrideUrlLoading(view, url); //try return false;
+        }
+    }
 }
 
 
