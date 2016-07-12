@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 
 import com.firebase.client.Firebase;
 
@@ -15,9 +18,12 @@ import com.firebase.client.Firebase;
  */
 public class RegisterFragment extends Fragment {
     private static final String TAG = "RegisterFragment";
+    private final String URL = "http://registertovote.ca.gov";
     private Firebase rootFbRef;
     private Firebase stateFbRef;
     private Firebase chosenStateFbRef;
+    private WebView webView;
+    private CustomWebViewClient webViewClient;
 
 
     /**
@@ -37,10 +43,29 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
-
+        initializeViews(v);
+        setWebView();
         return v;
     }
 
+    private void initializeViews(View v){
+        webView = (WebView) v.findViewById(R.id.register_webView_id);
+
+    }
+
+    private void setWebView(){
+        webViewClient = new CustomWebViewClient();
+        webView.setWebViewClient(webViewClient);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(URL);
+    }
+
+    private class CustomWebViewClient extends WebViewClient{
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return super.shouldOverrideUrlLoading(view, url); //try return false;
+        }
+    }
 }
 
 
