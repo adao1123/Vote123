@@ -2,7 +2,9 @@ package com.example.vote123;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,8 +27,16 @@ public class CalendarFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_calendar, container, false);
         setView(v);
         setButtonClick();
+
+
         return v;
     }
+
+    private String getPollAdress(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPreferences.getString(PollingFragment.POLL_ADDRESS_ID, "");
+    }
+
     private void setView(View v){
         addToCalButton = (Button)v.findViewById(R.id.add_button_calender_id);
     }
@@ -50,6 +60,7 @@ public class CalendarFragment extends Fragment {
         endTime.set(2016, Calendar.NOVEMBER, 8, 20, 0);
         long endMillis = endTime.getTimeInMillis();
 
+        String pollAddress = getPollAdress();
 
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
@@ -57,11 +68,10 @@ public class CalendarFragment extends Fragment {
                 .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endMillis)
                 .putExtra(CalendarContract.Events.TITLE, title)
                 .putExtra(CalendarContract.Events.DESCRIPTION, description)
-                //.putExtra(CalendarContract.Events.EVENT_LOCATION, location)
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, pollAddress)
                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
         startActivity(intent);
-
-
     }
 
 }
