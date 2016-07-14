@@ -1,8 +1,11 @@
 package com.example.vote123;
 
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
@@ -11,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 
 /**
@@ -62,16 +67,18 @@ public class CalendarFragment extends Fragment {
 
         String pollAddress = getPollAdress();
 
+
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startMillis)
                 .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endMillis)
                 .putExtra(CalendarContract.Events.TITLE, title)
-                .putExtra(CalendarContract.Events.DESCRIPTION, description)
-                .putExtra(CalendarContract.Events.EVENT_LOCATION, pollAddress)
-                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
-
-        startActivity(intent);
+                .putExtra(CalendarContract.Events.DESCRIPTION, description);
+        if (pollAddress != null) {
+            intent.putExtra(CalendarContract.Events.EVENT_LOCATION, pollAddress);
+        }
+            intent.putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+            startActivity(intent);
     }
 
 }
