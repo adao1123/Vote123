@@ -14,7 +14,7 @@
         android:id="@+id/main_title_textView_id"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:background="@drawable/vote123logo"
+        android:background="@drawable/realvote123logo"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
