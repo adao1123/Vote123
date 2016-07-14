@@ -27,7 +27,6 @@ public class RegisterFragment extends Fragment {
     // private final String URL = "http://registertovote.ca.gov"; this is the CA registration url
     private static final String DEFAULT = "Hogwarts";
     private Firebase rootFbRef;
-    private Firebase stateFbRef;
     private Firebase chosenStateFbRef;
     private WebView webView;
     private CustomWebViewClient webViewClient;
@@ -76,9 +75,8 @@ public class RegisterFragment extends Fragment {
     }
 
     private void setFbRefs(){
-        rootFbRef = new Firebase("");
-        stateFbRef = rootFbRef.child("state"); //make sure this is correct
-        chosenStateFbRef = stateFbRef.child(stateSelected);
+        rootFbRef = new Firebase("https://123vote.firebaseio.com/");
+        chosenStateFbRef = rootFbRef.child(stateSelected);
         chosenStateFbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
