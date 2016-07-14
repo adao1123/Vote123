@@ -32,7 +32,7 @@ public class ExploreFragment extends Fragment {
     private Firebase firebaseQuestions;
     private Firebase firebaseQuestion;
     private String selectedState;
-    private long numQuestions;
+    private int numQuestions;
     private ArrayList<String> questionArray;
     private ArrayList<String> costArray;
     private ArrayList<String> proconArray;
@@ -44,6 +44,8 @@ public class ExploreFragment extends Fragment {
     private Button maybeButton;
     private Button noButton;
     private int currentQuestionNum;
+    private GoToMyBallotListener goToMyBallotListener;
+    private String[] savedAnswers;
 
 
     public ExploreFragment() {
@@ -58,7 +60,7 @@ public class ExploreFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_explore, container, false);
         questionTV = (TextView)view.findViewById(R.id.explore_question_TV_id);
         proconButton = (Button)view.findViewById(R.id.explore_procon_button_id);
-        proconButton = (Button)view.findViewById(R.id.explore_question_button_id);
+        questionButton = (Button)view.findViewById(R.id.explore_question_button_id);
         costButton = (Button)view.findViewById(R.id.explore_cost_button_id);
         yesButton = (Button)view.findViewById(R.id.explore_yes_button_id);
         noButton = (Button)view.findViewById(R.id.explore_no_button_id);
@@ -72,6 +74,14 @@ public class ExploreFragment extends Fragment {
         currentQuestionNum = 1;
         getSelectedState();
         manageFirebase();
+        setInitQuestion();
+        setButtonListeners();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        goToMyBallotListener = (GoToMyBallotListener)getActivity();
     }
 
     private String getSelectedState(){
@@ -94,53 +104,71 @@ public class ExploreFragment extends Fragment {
         firebaseQuestions = firebaseState.child("Question");
     }
 
+    private void setInitQuestion(){
+        displayContent(1,'?');
+    }
+
     private void setButtonListeners(){
         proconButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'+');
             }
         });
         costButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'$');
             }
         });
         questionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'?');
             }
         });
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
+                savedAnswers[currentQuestionNum-1] = "No";
                 currentQuestionNum++;
-                displayContent(currentQuestionNum,'?');
+                if (currentQuestionNum>numQuestions){
+                    saveAnsersToPref();
+                    goToMyBallotListener.goToMyBallot();
+                }
+                else displayContent(currentQuestionNum,'?');
             }
         });
         maybeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
+                savedAnswers[currentQuestionNum-1] = "Maybe";
                 currentQuestionNum++;
-                displayContent(currentQuestionNum,'?');
+                if (currentQuestionNum>numQuestions) {
+                    saveAnsersToPref();
+                    goToMyBallotListener.goToMyBallot();
+                }
+                else displayContent(currentQuestionNum,'?');
             }
         });
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (savedAnswers==null)return;
+                savedAnswers[currentQuestionNum-1] = "Yes";
                 currentQuestionNum++;
-                displayContent(currentQuestionNum,'?');
+                if (currentQuestionNum>numQuestions) {
+                    saveAnsersToPref();
+                    goToMyBallotListener.goToMyBallot();
+                }
+                else displayContent(currentQuestionNum,'?');
             }
         });
-    }
-
-    private void addQuestion(){
-        firebaseQuestion = firebaseQuestions.child("1");
-        firebaseQuestion.setValue("Question1");
-        firebaseQuestion.child("Cost").setValue("cost");
-        firebaseQuestion.child("Procon").setValue("procon");
     }
 
     private void displayContent(int questionNumber,char prompt){
@@ -165,6 +193,7 @@ public class ExploreFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String text = (String) dataSnapshot.getValue();
                 questionTV.setText(text);
+                Log.i(TAG, "onDataChange: "+text);
             }
 
             @Override
@@ -178,9 +207,10 @@ public class ExploreFragment extends Fragment {
         firebaseQuestions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                numQuestions = dataSnapshot.getChildrenCount();
+                numQuestions = (int)dataSnapshot.getChildrenCount();
+                savedAnswers = new String[numQuestions];
                 Log.i(TAG, "onDataChange: "+numQuestions);
-                makeStringLists();
+//                makeStringLists();
             }
 
             @Override
@@ -190,50 +220,70 @@ public class ExploreFragment extends Fragment {
         });
     }
 
-    private void makeStringLists(){
-        questionArray = new ArrayList<>();
-        costArray = new ArrayList<>();
-        proconArray = new ArrayList<>();
-        for (int i = 1; i<=numQuestions; i++){
-            firebaseQuestions.child(i+"").child("Prompt").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    questionArray.add((String)dataSnapshot.getValue());
-                    Log.i(TAG, "Question 1: " + questionArray.get(0));
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-            firebaseQuestions.child(i+"").child("Cost").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    costArray.add((String)dataSnapshot.getValue());
-                    Log.i(TAG, "Cost 1: " + costArray.get(0));
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-            firebaseQuestions.child(i+"").child("Procon").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    proconArray.add((String)dataSnapshot.getValue());
-                    Log.i(TAG, "Procon 1: " + proconArray.get(0));
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-
+    private void saveAnsersToPref(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for (int i = 0; i<numQuestions; i++){
+            editor.putString("ANSWER"+i,savedAnswers[i]);
         }
-        Log.i(TAG, "makeStringLists: ");
+        editor.commit();
+
     }
 
+    public interface GoToMyBallotListener{
+        void goToMyBallot();
+    }
+//
+//    private void addQuestion(){
+//        firebaseQuestion = firebaseQuestions.child("1");
+//        firebaseQuestion.setValue("Question1");
+//        firebaseQuestion.child("Cost").setValue("cost");
+//        firebaseQuestion.child("Procon").setValue("procon");
+//    }
+//
+//    private void makeStringLists(){
+//        questionArray = new ArrayList<>();
+//        costArray = new ArrayList<>();
+//        proconArray = new ArrayList<>();
+//        for (int i = 1; i<=numQuestions; i++){
+//            firebaseQuestions.child(i+"").child("Prompt").addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    questionArray.add((String)dataSnapshot.getValue());
+//                    Log.i(TAG, "Question 1: " + questionArray.get(0));
+//                }
+//
+//                @Override
+//                public void onCancelled(FirebaseError firebaseError) {
+//
+//                }
+//            });
+//            firebaseQuestions.child(i+"").child("Cost").addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    costArray.add((String)dataSnapshot.getValue());
+//                    Log.i(TAG, "Cost 1: " + costArray.get(0));
+//                }
+//
+//                @Override
+//                public void onCancelled(FirebaseError firebaseError) {
+//
+//                }
+//            });
+//            firebaseQuestions.child(i+"").child("Procon").addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    proconArray.add((String)dataSnapshot.getValue());
+//                    Log.i(TAG, "Procon 1: " + proconArray.get(0));
+//                }
+//
+//                @Override
+//                public void onCancelled(FirebaseError firebaseError) {
+//
+//                }
+//            });
+//
+//        }
+//        Log.i(TAG, "makeStringLists: ");
+//    }
 }
