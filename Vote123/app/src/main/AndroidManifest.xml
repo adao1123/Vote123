@@ -17,7 +17,7 @@
     <application
         android:allowBackup="true"
         android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        android:icon="@drawable/vote123logo"
+        android:icon="@drawable/realvote123logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:name=".MyApplicaton"
