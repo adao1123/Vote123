@@ -26,9 +26,11 @@ public class MyBallotFragment extends Fragment {
 
     private static final String TAG = "MY BALLOT FRAGMENT";
     private ArrayList<String> savedAnswers;
+    private ArrayList<String> stateQuestions;
     private Firebase firebaseRef;
     private Firebase firebaseState;
     private Firebase firebaseQuestions;
+    private Firebase firebaseQuestion;
     private String selectedState;
     private int numQuestions;
 
@@ -49,6 +51,7 @@ public class MyBallotFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "onViewCreated: ");
         savedAnswers = new ArrayList<>();
+        stateQuestions = new ArrayList<>();
         manageFirebase();
         getAnswersFromPref();
     }
@@ -76,6 +79,7 @@ public class MyBallotFragment extends Fragment {
         getStateFromPref();
         initFirebase();
         getNumQuestions();
+        getStateQuestions();
     }
 
     private void initFirebase(){
@@ -99,6 +103,21 @@ public class MyBallotFragment extends Fragment {
         });
     }
 
+    private ArrayList<String> getStateQuestions() {
+        for (int i = 1; i <= numQuestions; i++) {
+            firebaseQuestion = firebaseQuestions.child(i + "").child("Prompt");
+            firebaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    savedAnswers.add((String) dataSnapshot.getValue());
+                }
 
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
 
+                }
+            });
+        }
+        return savedAnswers;
+    }
 }
