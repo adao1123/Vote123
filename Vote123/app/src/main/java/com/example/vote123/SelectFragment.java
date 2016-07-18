@@ -57,7 +57,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setUpSpinner();
-        setImageUrlsToFB();
+//        setImageUrlsToFB();
     }
 
     private void setUpSpinner(){

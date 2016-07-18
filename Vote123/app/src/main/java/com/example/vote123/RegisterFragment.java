@@ -55,7 +55,7 @@ public class RegisterFragment extends Fragment {
         initializeViews(v);
         getState();
         setFbRefs();
-        setWebView();
+//        setWebView();
         return v;
     }
 
@@ -77,10 +77,12 @@ public class RegisterFragment extends Fragment {
     private void setFbRefs(){
         rootFbRef = new Firebase("https://123vote.firebaseio.com/");
         chosenStateFbRef = rootFbRef.child(stateSelected);
-        chosenStateFbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        chosenStateFbRef.child("Register").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 registrationURL = dataSnapshot.getValue(String.class);
+                Log.i(TAG, "onDataChange: "+registrationURL);
+                setWebView();
             }
 
             @Override
@@ -94,6 +96,7 @@ public class RegisterFragment extends Fragment {
         webViewClient = new CustomWebViewClient();
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setJavaScriptEnabled(true);
+        Log.i(TAG, "setWebView: "+registrationURL);
         webView.loadUrl(registrationURL);
     }
 
