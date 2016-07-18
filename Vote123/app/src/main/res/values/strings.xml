@@ -6,6 +6,7 @@
     <string name="register_vote_button">Register to Vote</string>
 
     <string-array name="states_array">
+        <item>Pick your State</item>
         <item>Alabama</item>
         <item>Alaska</item>
         <item>Arizona</item>

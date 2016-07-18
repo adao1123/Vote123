@@ -122,6 +122,8 @@ public class PollingFragment extends Fragment {
         });
     }
 
+
+
     private void setGoogleMapClicker() {
         directionButton.setOnClickListener(new View.OnClickListener() {
             @Override
