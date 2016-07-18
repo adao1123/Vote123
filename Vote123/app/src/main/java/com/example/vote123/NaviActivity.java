@@ -13,7 +13,7 @@ import android.view.MenuItem;
 /**
  * This is the new main activity.
  */
-public class NaviActivity extends AppCompatActivity {
+public class NaviActivity extends AppCompatActivity implements ExploreFragment.GoToMyBallotListener{
     private static final String TAG = "NaviActivity";
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -143,4 +143,10 @@ public class NaviActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
     }
 
+    @Override
+    public void goToMyBallot() {
+        setFragmentLogistics();
+        fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
+        fragmentTransaction.commit();
+    }
 }

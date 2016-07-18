@@ -145,6 +145,7 @@ public class FindPollingActivity extends AppCompatActivity {
                 .putExtra(CalendarContract.Events.DESCRIPTION, description)
                 .putExtra(CalendarContract.Events.EVENT_LOCATION, location)
                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
         startActivity(intent);
 
 

@@ -15,19 +15,41 @@
         android:gravity="center" />
 
     <TextView
+        android:textSize="18sp"
         android:id="@+id/calendar_text_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add election day to your calendar"
+        android:text="Election Date: Nov. 8th"
         android:gravity="center"/>
 
     <Button
         android:id="@+id/add_button_calender_id"
         android:text="Add to Calendar"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:id="@+id/calendar_lastDayToRegist_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Last Day to Register: Oct. 24th"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/addButtonLastDay_calender_id"
+        android:text="Add to Calendar"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
 
 
 </LinearLayout>
