@@ -119,7 +119,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     private void saveStateToPref(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("STATE",selectedStatetate);
+        editor.putString("STATE", selectedState);
         editor.commit();
 
     }

@@ -5,18 +5,32 @@
     android:orientation="vertical"
     tools:context="com.example.vote123.CalendarFragment">
 
-    <TextView
-        android:background="@drawable/banner1"
-        android:id="@+id/calendar_image_id"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="Calendar"
-        android:textSize="20sp"
-        android:gravity="center" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/banner_clear"
+            android:id="@+id/calendar_image_ID"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:text="Dates To Remember: "
+            android:id="@+id/calendar_title_ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
 
     <TextView
         android:textSize="18sp"
-        android:id="@+id/calendar_text_id"
+        android:id="@+id/calendar_election_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Election Date: Nov. 8th"

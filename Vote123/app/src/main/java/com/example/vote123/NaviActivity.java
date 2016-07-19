@@ -1,5 +1,6 @@
 package com.example.vote123;
 
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * This is the new main activity.
@@ -38,6 +41,7 @@ public class NaviActivity extends AppCompatActivity implements ExploreFragment.G
         if(savedInstanceState == null){
         setInitialFragment();
         }
+
     }
 
     /**
