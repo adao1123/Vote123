@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -37,12 +38,13 @@ public class ExploreFragment extends Fragment {
     private ArrayList<String> costArray;
     private ArrayList<String> proconArray;
     private TextView questionTV;
-    private Button proconButton;
-    private Button costButton;
-    private Button questionButton;
-    private Button yesButton;
-    private Button maybeButton;
-    private Button noButton;
+    private TextView titleTV;
+    private ImageButton proconButton;
+    private ImageButton costButton;
+    private ImageButton questionButton;
+    private ImageButton yesButton;
+    private ImageButton maybeButton;
+    private ImageButton noButton;
     private int currentQuestionNum;
     private GoToMyBallotListener goToMyBallotListener;
     private String[] savedAnswers;
@@ -59,12 +61,13 @@ public class ExploreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_explore, container, false);
         questionTV = (TextView)view.findViewById(R.id.explore_question_TV_id);
-        proconButton = (Button)view.findViewById(R.id.explore_procon_button_id);
-        questionButton = (Button)view.findViewById(R.id.explore_question_button_id);
-        costButton = (Button)view.findViewById(R.id.explore_cost_button_id);
-        yesButton = (Button)view.findViewById(R.id.explore_yes_button_id);
-        noButton = (Button)view.findViewById(R.id.explore_no_button_id);
-        maybeButton = (Button)view.findViewById(R.id.explore_maybe_button_id);
+        titleTV = (TextView)view.findViewById(R.id.explore_title);
+        proconButton = (ImageButton)view.findViewById(R.id.explore_procon_button_id);
+        questionButton = (ImageButton)view.findViewById(R.id.explore_question_button_id);
+        costButton = (ImageButton)view.findViewById(R.id.explore_cost_button_id);
+        yesButton = (ImageButton)view.findViewById(R.id.explore_yes_button_id);
+        noButton = (ImageButton)view.findViewById(R.id.explore_no_button_id);
+        maybeButton = (ImageButton)view.findViewById(R.id.explore_maybe_button_id);
         return view;
     }
 
@@ -114,6 +117,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'+');
+                titleTV.setText("Pros / Cons");
             }
         });
         costButton.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +125,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'$');
+                titleTV.setText("Costs");
             }
         });
         questionButton.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +133,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'?');
+                titleTV.setText("Question");
             }
         });
         noButton.setOnClickListener(new View.OnClickListener() {

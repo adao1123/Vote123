@@ -1,6 +1,7 @@
 package com.example.vote123;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,6 +47,7 @@ public class PollingFragment extends Fragment {
     public static final String POLL_ADDRESS_ID = "Poll Address";
     private Bundle pollAddressBundle;
     private GoogleApiClient mGoogleApiClient;
+    private SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -60,7 +63,21 @@ public class PollingFragment extends Fragment {
 
         buttonListener();
         setGoogleMapClicker();
+
+
+
+
+        if (getPollAdress() != ""){
+            addressText.setText(getPollAdress());
+            directionButton.setVisibility(View.VISIBLE);
+        }
+
         return v;
+    }
+
+    private String getPollAdress(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPreferences.getString(POLL_ADDRESS_ID, "");
     }
 
 
@@ -73,6 +90,8 @@ public class PollingFragment extends Fragment {
         zipEdit = (EditText) v.findViewById(R.id.pollTwo_zipEdit_id);
         submitButton = (Button) v.findViewById(R.id.pollTwo_submitButton_ID);
         directionButton = (Button) v.findViewById(R.id.direction_button_ID);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
     }
 
     private void buttonListener() {
@@ -96,25 +115,30 @@ public class PollingFragment extends Fragment {
                     call.enqueue(new Callback<AddressData>() {
                         @Override
                         public void onResponse(Call<AddressData> call, Response<AddressData> response) {
-                            if (response.body().getPollingLocations()[0] == null) return;
-                            AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
-                            AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
-                            returnAddress = pollingAddress.getAddressStreet() + "\n " + pollingAddress.getAddressCity() + " " + pollingAddress.getAddressState() + " " + pollingAddress.getAddressZip();
-                            inputedAddress = inputedAddress.toUpperCase();
-                            returnAddress = returnAddress.toUpperCase();
-                            addressText.setText(returnAddress);
-                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString(POLL_ADDRESS_ID, returnAddress);
-                            editor.commit();
-                            directionButton.setVisibility(View.VISIBLE);
+                            if (response.body().getPollingLocations() == null) {
+                                Toast.makeText(getContext(),"Not a registered address",Toast.LENGTH_SHORT).show();
+                                return;
+                            } else {
+                                AddressData.PollingPlace pollingPlace = response.body().getPollingLocations()[0];
+                                AddressData.PollingPlace.Address pollingAddress = pollingPlace.getPollingPlaceAddress();
+                                returnAddress = pollingAddress.getAddressStreet() + "\n" + pollingAddress.getAddressCity() + " " + pollingAddress.getAddressState() + " " + pollingAddress.getAddressZip();
+                                inputedAddress = inputedAddress.toUpperCase();
+                                returnAddress = returnAddress.toUpperCase();
+
+                                addressText.setText(returnAddress);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(POLL_ADDRESS_ID, returnAddress);
+                                editor.commit();
+                                directionButton.setVisibility(View.VISIBLE);
 //                        pollAddressBundle = new Bundle();
 //                        pollAddressBundle.putString(POLL_ADDRESS_ID, returnAddress);
 
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<AddressData> call, Throwable t) {
+
                         }
                     });
                 }
