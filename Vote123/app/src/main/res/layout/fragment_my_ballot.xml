@@ -36,6 +36,7 @@
             android:text="Ballot Measure 1"
             android:textSize="20sp"
             android:textStyle="bold"/>
+
     </LinearLayout>
 
 
