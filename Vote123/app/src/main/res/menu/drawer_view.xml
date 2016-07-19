@@ -12,7 +12,7 @@
             android:title="Find Your Polling Place"/>
         <item
             android:id="@+id/drawer_calendar_id"
-            android:icon="@drawable/usa_48"
+            android:icon="@drawable/calendar_icon"
             android:title="Important Dates"/>
         <item
             android:id="@+id/drawer_explore_id"
