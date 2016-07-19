@@ -20,20 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4">
-        <Button
+        <ImageButton
             android:id="@+id/explore_procon_button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:src="@drawable/procon_icon"
             android:layout_weight="1"
             android:text="+/-"/>
-        <Button
+        <ImageButton
             android:id="@+id/explore_question_button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:src="@drawable/question_icon1"
             android:layout_weight="1"
             android:text="\?"/>
-        <Button
+        <ImageButton
             android:id="@+id/explore_cost_button_id"
+            android:src="@drawable/pricetag_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,22 +48,25 @@
         android:layout_weight="4"
         android:layout_height="match_parent"
         >
-        <Button
+        <ImageButton
             android:id="@+id/explore_yes_button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:src="@drawable/yes_icon"
             android:text="Yes"/>
-        <Button
+        <ImageButton
             android:id="@+id/explore_maybe_button_id"
             android:layout_width="match_parent"
+            android:src="@drawable/maybe_icon"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="N/A"/>
-        <Button
+        <ImageButton
             android:id="@+id/explore_no_button_id"
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:src="@drawable/no_icon"
             android:layout_height="wrap_content"
             android:text="No"/>
     </LinearLayout>
