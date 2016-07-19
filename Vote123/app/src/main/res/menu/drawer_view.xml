@@ -4,23 +4,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_register_id"
-            android:icon="@drawable/usa_48"
+            android:icon="@drawable/register_icon"
             android:title="Register to Vote"/>
         <item
             android:id="@+id/drawer_polling_id"
-            android:icon="@drawable/usa_48"
+            android:icon="@drawable/polling_icon"
             android:title="Find Your Polling Place"/>
         <item
             android:id="@+id/drawer_calendar_id"
             android:icon="@drawable/usa_48"
-            android:title="Add to Calendar"/>
+            android:title="Important Dates"/>
         <item
             android:id="@+id/drawer_explore_id"
-            android:icon="@drawable/usa_48"
+            android:icon="@drawable/explore_icon"
             android:title="Explore the Ballot"/>
         <item
             android:id="@+id/drawer_my_ballot_id"
-            android:icon="@drawable/usa_48"
+            android:icon="@drawable/ballot_box_icon"
             android:title="My Ballot"/>
 
         <item android:title="Settings">
@@ -28,7 +28,7 @@
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/drawer_select_id"
-                        android:icon="@drawable/usa_48"
+                        android:icon="@drawable/usa_white_icon"
                         android:title="Change State"/>
                 </group>
 
