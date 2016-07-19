@@ -158,6 +158,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
         });
         AlertDialog alertDialog = dialogBuidler.create();
         alertDialog.show();
+//        alertDialog.setContentView();
     }
 
 
