@@ -92,7 +92,6 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
         selectedState = (String)parent.getItemAtPosition(position);
         if (selectedState.equals("Pick your State")) return;
         Log.i(TAG, "onItemSelected: "+ selectedState);
-        saveStateToPref();
         manageFirebase();
         firebase.child(selectedState).child("StatesImage").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -119,6 +118,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
             }
         });
         if (isFirstTime())initDialog();
+        saveStateToPref();
     }
 
     @Override
@@ -138,6 +138,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     private boolean isFirstTime(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("FIRST","default").equals("default"))return true;
+        if (!sharedPreferences.getString("FIRST","default").equals("HERE"))return true;
         else return false;
     }
 

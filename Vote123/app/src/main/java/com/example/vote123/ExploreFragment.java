@@ -140,6 +140,7 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (savedAnswers==null)return;
+                if (numQuestions<1)return;
                 savedAnswers[currentQuestionNum-1] = "No";
                 currentQuestionNum++;
                 if (currentQuestionNum>numQuestions){
@@ -153,6 +154,7 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (savedAnswers==null)return;
+                if (numQuestions<1)return;
                 savedAnswers[currentQuestionNum-1] = "Maybe";
                 currentQuestionNum++;
                 if (currentQuestionNum>numQuestions) {
@@ -166,6 +168,7 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (savedAnswers==null)return;
+                if (numQuestions<1)return;
                 savedAnswers[currentQuestionNum-1] = "Yes";
                 currentQuestionNum++;
                 if (currentQuestionNum>numQuestions) {
