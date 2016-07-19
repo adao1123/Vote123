@@ -48,6 +48,7 @@ public class PollingFragment extends Fragment {
     private Bundle pollAddressBundle;
     private GoogleApiClient mGoogleApiClient;
     private SharedPreferences sharedPreferences;
+    private Uri gmmIntentUri;
 
     @Nullable
     @Override
@@ -152,8 +153,11 @@ public class PollingFragment extends Fragment {
         directionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Uri gmmIntentUri = Uri.parse("geo:40.591874, -98.813442 ?q=" + Uri.encode(returnAddress));
+                if(getPollAdress() !=""){
+                    gmmIntentUri = Uri.parse("geo:40.591874, -98.813442 ?q=" + Uri.encode(getPollAdress()));
+                } else {
+                    gmmIntentUri = Uri.parse("geo:40.591874, -98.813442 ?q=" + Uri.encode(returnAddress));
+                }
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
