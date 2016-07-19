@@ -38,6 +38,7 @@ public class ExploreFragment extends Fragment {
     private ArrayList<String> costArray;
     private ArrayList<String> proconArray;
     private TextView questionTV;
+    private TextView titleTV;
     private ImageButton proconButton;
     private ImageButton costButton;
     private ImageButton questionButton;
@@ -60,6 +61,7 @@ public class ExploreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_explore, container, false);
         questionTV = (TextView)view.findViewById(R.id.explore_question_TV_id);
+        titleTV = (TextView)view.findViewById(R.id.explore_title);
         proconButton = (ImageButton)view.findViewById(R.id.explore_procon_button_id);
         questionButton = (ImageButton)view.findViewById(R.id.explore_question_button_id);
         costButton = (ImageButton)view.findViewById(R.id.explore_cost_button_id);
@@ -115,6 +117,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'+');
+                titleTV.setText("Pros / Cons");
             }
         });
         costButton.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +125,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'$');
+                titleTV.setText("Costs");
             }
         });
         questionButton.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +133,7 @@ public class ExploreFragment extends Fragment {
             public void onClick(View v) {
                 if (savedAnswers==null)return;
                 displayContent(currentQuestionNum,'?');
+                titleTV.setText("Question");
             }
         });
         noButton.setOnClickListener(new View.OnClickListener() {
