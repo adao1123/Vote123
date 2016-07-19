@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/banner2"
+            android:src="@drawable/banner_clear"
             android:id="@+id/pollTwo_image_ID"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
@@ -16,7 +16,7 @@
         <TextView
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:textAlignment="center"
             android:text="Your poll place is at: "
             android:id="@+id/pollTwo_text_ID"
