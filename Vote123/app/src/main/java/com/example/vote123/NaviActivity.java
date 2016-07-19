@@ -1,11 +1,14 @@
 package com.example.vote123;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 /**
  * This is the new main activity.
  */
-public class NaviActivity extends AppCompatActivity implements ExploreFragment.GoToMyBallotListener{
+public class NaviActivity extends AppCompatActivity implements ExploreFragment.GoToMyBallotListener, SelectFragment.OnDialogAnswerListener{
     private static final String TAG = "NaviActivity";
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -62,7 +65,8 @@ public class NaviActivity extends AppCompatActivity implements ExploreFragment.G
      */
     private void setInitialFragment(){
         setFragmentLogistics();
-        fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
+        if (!isFirstTime())fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
+        else fragmentTransaction.replace(R.id.navi_container_id, selectFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -147,10 +151,29 @@ public class NaviActivity extends AppCompatActivity implements ExploreFragment.G
         fragmentTransaction = fragmentManager.beginTransaction();
     }
 
+    private boolean isFirstTime(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("FIRST","default").equals("default"))return true;
+        else return false;
+    }
+
     @Override
     public void goToMyBallot() {
         setFragmentLogistics();
         fragmentTransaction.replace(R.id.navi_container_id, myBallotFragment);
         fragmentTransaction.commit();
+    }
+
+
+    @Override
+    public void OnDialogAnswer(String answer) {
+        setFragmentLogistics();
+        if (answer=="YES"){
+            fragmentTransaction.replace(R.id.navi_container_id, pollingFragment);
+            fragmentTransaction.commit();
+        }else{
+            fragmentTransaction.replace(R.id.navi_container_id, registerFragment);
+            fragmentTransaction.commit();
+        }
     }
 }

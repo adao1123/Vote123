@@ -2,10 +2,12 @@ package com.example.vote123;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,8 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     private Firebase firebase;
     private ImageView flagIV;
     private ImageView stateIV;
+    OnDialogAnswerListener onDialogAnswerListener;
+
 //    private String stateImageUri, flagUri;
 
     public SelectFragment() {
@@ -58,6 +62,12 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
         super.onViewCreated(view, savedInstanceState);
         setUpSpinner();
 //        setImageUrlsToFB();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        onDialogAnswerListener = (OnDialogAnswerListener)getActivity();
     }
 
     private void setUpSpinner(){
@@ -108,7 +118,7 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
 
             }
         });
-
+        if (isFirstTime())initDialog();
     }
 
     @Override
@@ -120,9 +130,37 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("STATE",selectedState);
+        editor.putString("FIRST","HERE");
         editor.commit();
 
     }
+
+    private boolean isFirstTime(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SHARE_KEY", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("FIRST","default").equals("default"))return true;
+        else return false;
+    }
+
+    private void initDialog(){
+        AlertDialog.Builder dialogBuidler = new AlertDialog.Builder(getContext());
+        dialogBuidler.setMessage("Are you registered to vote?");
+        dialogBuidler.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onDialogAnswerListener.OnDialogAnswer("YES");
+            }
+        });
+        dialogBuidler.setNegativeButton("Not Yet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onDialogAnswerListener.OnDialogAnswer("NO");
+            }
+        });
+        AlertDialog alertDialog = dialogBuidler.create();
+        alertDialog.show();
+//        alertDialog.setContentView();
+    }
+
 
     private void setImageUrlsToFB(){
         manageFirebase();
@@ -138,5 +176,9 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
             stateFB.child("StateFlag").setValue("http://www.50states.com/images/redesign/flags/"+stateAbs[i].toLowerCase()+"-largeflag.png");
             stateFB.child("StatesImage").setValue("http://www.50states.com/images/redesign/maps/"+stateAbs[i].toLowerCase()+"-largemap.png");
         }
+    }
+
+    public interface OnDialogAnswerListener{
+        public void OnDialogAnswer(String answer);
     }
 }
