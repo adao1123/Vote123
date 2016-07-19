@@ -4,18 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:src="@drawable/findyourpollingplace"
-        android:id="@+id/pollTwo_image_ID"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/banner2"
+            android:id="@+id/pollTwo_image_ID"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
-    <TextView
-        android:gravity="center"
-        android:text="Your poll place is at: "
-        android:id="@+id/pollTwo_text_ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:textAlignment="center"
+            android:text="Your poll place is at: "
+            android:id="@+id/pollTwo_text_ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -53,6 +63,8 @@
         android:layout_marginTop="15dp"
         android:id="@+id/pollTwo_streetEdit_id"
         android:gravity="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:hint="Street"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -60,6 +72,8 @@
     <EditText
         android:id="@+id/pollTwo_cityEdit_id"
         android:gravity="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:hint="City"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -67,6 +81,8 @@
     <EditText
         android:id="@+id/pollTwo_stateEdit_id"
         android:gravity="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:hint="State"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -74,6 +90,8 @@
     <EditText
         android:id="@+id/pollTwo_zipEdit_id"
         android:gravity="center"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:hint="Zip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
