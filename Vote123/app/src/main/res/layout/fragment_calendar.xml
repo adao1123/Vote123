@@ -27,48 +27,79 @@
 
     </FrameLayout>
 
-
-    <TextView
-        android:textSize="18sp"
-        android:id="@+id/calendar_election_id"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Election Day: \n November 8th, 2016"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_margin="5dp">
+            <TextView
+                android:textSize="18sp"
+                android:id="@+id/calendar_election_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Election Day: \n November 8th, 2016"
+                android:textStyle="bold"
+                android:gravity="center"/>
 
-    <Button
-        android:id="@+id/add_button_calender_id"
-        android:text="Add to Calendar"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:background="@color/colorPrimary"/>
+            <Button
+                android:id="@+id/add_button_calender_id"
+                android:text="Add to Calendar"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"/>
 
+        </LinearLayout>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:id="@+id/calendar_lastDayToRegist_id"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Last Day to Register in Your State: \n October 24th, 2016"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_margin="5dp">
 
-    <Button
-        android:id="@+id/addButtonLastDay_calender_id"
-        android:text="Add to Calendar"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:background="@color/colorPrimary"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:id="@+id/calendar_lastDayToRegist_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Last Day to Register in Your State: \n October 24th, 2016"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/addButtonLastDay_calender_id"
+                android:text="Add to Calendar"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout></LinearLayout>
 
 
 
