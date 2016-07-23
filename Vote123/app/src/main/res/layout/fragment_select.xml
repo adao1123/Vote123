@@ -6,7 +6,6 @@
     tools:context="com.example.vote123.SelectFragment"
     android:layout_margin="10dp">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,7 +25,6 @@
             android:textColor="@color/white"/>
 
     </FrameLayout>
-
 
     <Spinner
         android:layout_marginTop="10dp"
