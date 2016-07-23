@@ -24,11 +24,18 @@
             android:textColor="@color/white"/>
 
     </FrameLayout>
-
-    <WebView
-        android:id="@id/register_webView_id"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </WebView>
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryDark">
+        <WebView
+            android:id="@id/register_webView_id"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </WebView>
+    </LinearLayout>
 
 </LinearLayout>
