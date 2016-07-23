@@ -27,6 +27,7 @@ public class MyBallotFragment extends Fragment {
     private static final String TAG = "MY BALLOT FRAGMENT";
     private ArrayList<String> savedAnswers;
     private ArrayList<String> stateQuestions;
+    private ArrayList<String> propNames;
     private Firebase firebaseRef;
     private Firebase firebaseState;
     private Firebase firebaseQuestions;
@@ -52,6 +53,7 @@ public class MyBallotFragment extends Fragment {
         Log.i(TAG, "onViewCreated: ");
         savedAnswers = new ArrayList<>();
         stateQuestions = new ArrayList<>();
+        propNames = new ArrayList<>();
         manageFirebase();
         getAnswersFromPref();
     }
@@ -79,7 +81,6 @@ public class MyBallotFragment extends Fragment {
         getStateFromPref();
         initFirebase();
         getNumQuestions();
-        getStateQuestions();
     }
 
     private void initFirebase(){
@@ -94,6 +95,8 @@ public class MyBallotFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 numQuestions = (int)dataSnapshot.getChildrenCount();
                 Log.i(TAG, "onDataChange: "+numQuestions);
+                getStateQuestions();
+                getPropNames();
             }
 
             @Override
@@ -110,14 +113,34 @@ public class MyBallotFragment extends Fragment {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     stateQuestions.add((String) dataSnapshot.getValue());
+                    Log.i(TAG, "stateQuestions: " + stateQuestions);
                 }
 
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-
+                    Log.e(TAG, "onCancelled: " +firebaseError.getMessage());
                 }
             });
         }
         return stateQuestions;
+    }
+    private ArrayList<String> getPropNames() {
+        for (int i = 1; i <= numQuestions; i++) {
+            firebaseQuestion = firebaseQuestions.child(i + "").child("Prop");
+            firebaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    propNames.add((String) dataSnapshot.getValue());
+                    Log.i(TAG, "propNames: " + propNames);
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    Log.e(TAG, "onCancelled: " +firebaseError.getMessage());
+
+                }
+            });
+        }
+        return propNames;
     }
 }
