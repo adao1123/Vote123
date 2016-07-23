@@ -33,7 +33,7 @@
         android:id="@+id/calendar_election_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Election Day: \n\November 8th, 2016"
+        android:text="Election Day: \n November 8th, 2016"
         android:textStyle="bold"
         android:gravity="center"/>
 
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Last Day to Register in Your State: \n\October 24th, 2016"
+        android:text="Last Day to Register in Your State: \n October 24th, 2016"
         android:gravity="center"/>
 
     <Button
