@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.firebase.client.DataSnapshot;
@@ -37,6 +38,8 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     private Firebase firebase;
     private ImageView flagIV;
     private ImageView stateIV;
+    private LinearLayout imageBorder;
+    private LinearLayout flagBorder;
     OnDialogAnswerListener onDialogAnswerListener;
 
 //    private String stateImageUri, flagUri;
@@ -54,6 +57,8 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
         spinner = (Spinner)view.findViewById(R.id.select_state_spinner_id);
         flagIV = (ImageView)view.findViewById(R.id.select_state_flag);
         stateIV = (ImageView)view.findViewById(R.id.select_state_image);
+        imageBorder = (LinearLayout)view.findViewById(R.id.select_border1_id);
+        flagBorder = (LinearLayout)view.findViewById(R.id.select_border2_id);
         return view;
     }
 
@@ -90,7 +95,13 @@ public class SelectFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedState = (String)parent.getItemAtPosition(position);
-        if (selectedState.equals("Pick your State")) return;
+        if (selectedState.equals("Pick your State")){
+            imageBorder.setVisibility(View.INVISIBLE);
+            flagBorder.setVisibility(View.INVISIBLE);
+            return;
+        }
+        imageBorder.setVisibility(View.VISIBLE);
+        flagBorder.setVisibility(View.VISIBLE);
         Log.i(TAG, "onItemSelected: "+ selectedState);
         manageFirebase();
         firebase.child(selectedState).child("StatesImage").addListenerForSingleValueEvent(new ValueEventListener() {

@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <LinearLayout
+        android:id="@+id/select_border1_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -46,6 +47,7 @@
             android:layout_margin="10dp"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/select_border2_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
