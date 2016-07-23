@@ -109,7 +109,7 @@ public class MyBallotFragment extends Fragment {
             firebaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    savedAnswers.add((String) dataSnapshot.getValue());
+                    stateQuestions.add((String) dataSnapshot.getValue());
                 }
 
                 @Override
@@ -118,6 +118,6 @@ public class MyBallotFragment extends Fragment {
                 }
             });
         }
-        return savedAnswers;
+        return stateQuestions;
     }
 }

@@ -17,106 +17,221 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="29dp"
             android:text="MY BALLOT"
             android:textSize="25sp"
             android:textAlignment="center"
-            android:textColor="@color/white"/>
-
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
     </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Measures Submitted to the Voters"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:background="@color/divider"
+        android:padding="@dimen/tiny"
+        android:layout_marginLeft="@dimen/standard"
+        android:layout_marginRight="@dimen/standard"
+        android:layout_marginTop="@dimen/standard"
+        android:textSize="18sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/standard">
+        android:layout_marginLeft="@dimen/standard"
+        android:layout_marginRight="@dimen/standard"
+        android:paddingLeft="@dimen/tiny"
+        android:paddingRight="@dimen/tiny"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/myBallot_name1_tVid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:paddingTop="@dimen/tiny"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="PROPOSITION # - DESCRIPTION"/>
 
-            <TextView
-                android:id="@+id/myBallot_number1_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ballot Measure #"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/myBallot_name1_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title of Ballot Measure"
-                android:textSize="20sp"
-                android:layout_below="@id/myBallot_number1_id"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="YES"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignRight="@id/myBallot_number1_id" />
-        </RelativeLayout>
-
-        <RelativeLayout
+        <TextView
+            android:id="@+id/myBallot_question1_tVid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:paddingBottom="@dimen/baby"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="The question in plain English goes here."/>
 
-            <TextView
-                android:id="@+id/myBallot_number2_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ballot Measure #"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/myBallot_name2_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title of Ballot Measure"
-                android:textSize="20sp"
-                android:layout_below="@id/myBallot_number2_id"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="YES"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignRight="@id/myBallot_number2_id" />
-        </RelativeLayout>
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:id="@+id/myBallot_number3_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ballot Measure #"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/myBallot_name3_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title of Ballot Measure"
-                android:textSize="20sp"
-                android:layout_below="@id/myBallot_number3_id"/>
-
-            <TextView
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_yes1_iVid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="YES"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignRight="@id/myBallot_number3_id" />
-        </RelativeLayout>
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_no1_iVid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/standard"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/standard"
+        android:layout_marginRight="@dimen/standard"
+        android:paddingLeft="@dimen/tiny"
+        android:paddingRight="@dimen/tiny"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/myBallot_name2_tVid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/tiny"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="PROPOSITION # - DESCRIPTION"/>
+
+        <TextView
+            android:id="@+id/myBallot_question2_tVid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/baby"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="The question in plain English goes here."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_yes2_iVid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_no2_iVid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/standard"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/standard"
+        android:layout_marginRight="@dimen/standard"
+        android:paddingLeft="@dimen/tiny"
+        android:paddingRight="@dimen/tiny"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/myBallot_name3_tVid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/tiny"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="PROPOSITION # - DESCRIPTION"/>
+
+        <TextView
+            android:id="@+id/myBallot_question3_tVid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/baby"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="The question in plain English goes here."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_yes3_iVid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/myBallot_no3_iVid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon"
+                android:layout_marginLeft="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textAllCaps="true"
+                android:layout_marginLeft="@dimen/tiny"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/standard"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
