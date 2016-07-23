@@ -6,6 +6,28 @@
     tools:context="com.example.vote123.SelectFragment"
     android:layout_margin="10dp">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/banner_clear"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Select Your State:"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"/>
+
+    </FrameLayout>
+
+
     <Spinner
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
