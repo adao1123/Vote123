@@ -66,8 +66,6 @@ public class PollingFragment extends Fragment {
         setGoogleMapClicker();
 
 
-
-
         if (getPollAdress() != ""){
             addressText.setText(getPollAdress());
             directionButton.setVisibility(View.VISIBLE);
