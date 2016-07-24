@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -34,6 +36,18 @@ public class MyBallotFragment extends Fragment {
     private Firebase firebaseQuestion;
     private String selectedState;
     private int numQuestions;
+    private TextView name1TextView;
+    private TextView name2TextView;
+    private TextView name3TextView;
+    private TextView question1TextView;
+    private TextView question2TextView;
+    private TextView question3TextView;
+    private ImageView yes1ImageView;
+    private ImageView yes2ImageView;
+    private ImageView yes3ImageView;
+    private ImageView no1ImageView;
+    private ImageView no2ImageView;
+    private ImageView no3ImageView;
 
     public MyBallotFragment() {
         // Required empty public constructor
@@ -43,8 +57,9 @@ public class MyBallotFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_ballot, container, false);
+        View v = inflater.inflate(R.layout.fragment_my_ballot, container, false);
+        initializeViews(v);
+        return v;
     }
 
     @Override
@@ -56,6 +71,24 @@ public class MyBallotFragment extends Fragment {
         propNames = new ArrayList<>();
         manageFirebase();
         getAnswersFromPref();
+        setNameTextViews();
+        setQTextViews();
+        setBubbles();
+    }
+
+    private void initializeViews(View v){
+        name1TextView = (TextView) v.findViewById(R.id.myBallot_name1_tVid);
+        name2TextView = (TextView) v.findViewById(R.id.myBallot_name2_tVid);
+        name3TextView = (TextView) v.findViewById(R.id.myBallot_name3_tVid);
+        question1TextView = (TextView) v.findViewById(R.id.myBallot_question1_tVid);
+        question2TextView = (TextView) v.findViewById(R.id.myBallot_question2_tVid);
+        question3TextView = (TextView) v.findViewById(R.id.myBallot_question3_tVid);
+        yes1ImageView = (ImageView) v.findViewById(R.id.myBallot_yes1_iVid);
+        yes2ImageView = (ImageView) v.findViewById(R.id.myBallot_yes2_iVid);
+        yes3ImageView = (ImageView) v.findViewById(R.id.myBallot_yes3_iVid);
+        no1ImageView = (ImageView) v.findViewById(R.id.myBallot_no1_iVid);
+        no2ImageView = (ImageView) v.findViewById(R.id.myBallot_no2_iVid);
+        no3ImageView = (ImageView) v.findViewById(R.id.myBallot_no3_iVid);
     }
 
     private String getStateFromPref(){
@@ -143,4 +176,85 @@ public class MyBallotFragment extends Fragment {
         }
         return propNames;
     }
+
+    private void setNameTextViews(){
+        Log.i(TAG, "setViews: propNames array has a size of" + propNames.size());
+        if(propNames.size() == 0){
+            return;
+        } else{
+            name1TextView.setText(propNames.get(0));
+            name2TextView.setText(propNames.get(1));
+            name3TextView.setText(propNames.get(2));
+        }
+    }
+
+    private void setQTextViews(){
+        if(stateQuestions.size() == 0){
+            return;
+        } else{
+            question1TextView.setText(stateQuestions.get(0));
+            question2TextView.setText(stateQuestions.get(1));
+            question3TextView.setText(stateQuestions.get(2));
+        }
+    }
+
+    private void setBubbles(){
+        if(savedAnswers.size() == 0){
+            return;
+        } else {
+            bubble1(savedAnswers.get(0));
+            bubble2(savedAnswers.get(1));
+            bubble3(savedAnswers.get(2));
+        }
+    }
+
+    private void bubble1(String answer){
+        if(answer == null){
+            return;
+        }
+        switch(answer){
+            case "yes":
+                yes1ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            case "no":
+                no1ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void bubble2(String answer){
+        if(answer == null){
+            return;
+        }
+        switch(answer){
+            case "yes":
+                yes2ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            case "no":
+                no2ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void bubble3(String answer){
+        if(answer == null){
+            return;
+        }
+        switch(answer){
+            case "yes":
+                yes3ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            case "no":
+                no3ImageView.setImageResource(R.drawable.fill_icon);
+                break;
+            default:
+                break;
+        }
+    }
+
+
 }
