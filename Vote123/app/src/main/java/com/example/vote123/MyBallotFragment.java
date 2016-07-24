@@ -189,7 +189,7 @@ public class MyBallotFragment extends Fragment {
     }
 
     private void setNameTextViews(){
-        Log.i(TAG, "setViews: propNames array has a size of" + propNames.size());
+        Log.i(TAG, "setNameTextViews: propNames array has a size of" + propNames.size());
         if(propNames.size() == 0){
             return;
         } else{
