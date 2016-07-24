@@ -42,10 +42,17 @@
             android:layout_margin="5dp">
             <TextView
                 android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Election Day:"
+                android:gravity="center"/>
+            <TextView
+                android:textSize="18sp"
                 android:id="@+id/calendar_election_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Election Day: \n November 8th, 2016"
+                android:text="November 8th, 2016"
+                android:textAllCaps="true"
                 android:textStyle="bold"
                 android:gravity="center"/>
 
@@ -79,13 +86,20 @@
             android:layout_margin="5dp">
 
             <TextView
-                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Day to Register in Your State:"
+                android:gravity="center"/>
+
+            <TextView
                 android:textSize="18sp"
                 android:id="@+id/calendar_lastDayToRegist_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Last Day to Register in Your State: \n October 24th, 2016"
+                android:textAllCaps="true"
+                android:text="October 24th, 2016"
                 android:gravity="center"/>
 
             <Button

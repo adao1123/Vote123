@@ -59,6 +59,8 @@ public class MyBallotFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_ballot, container, false);
         initializeViews(v);
+//        setNameTextViews();
+//        setQTextViews();
         return v;
     }
 
@@ -71,9 +73,6 @@ public class MyBallotFragment extends Fragment {
         propNames = new ArrayList<>();
         manageFirebase();
         getAnswersFromPref();
-
-//        setNameTextViews();
-//        setQTextViews();
         setTempInfo();
         setBubbles();
     }
@@ -81,10 +80,10 @@ public class MyBallotFragment extends Fragment {
     private void setTempInfo(){
         name1TextView.setText("California \"Fair Wage Act of 2016\" - Increases the minimum wage in California to $15 by 2021.");
         name2TextView.setText("Proposition 52 - Requires voter approval of changes to the hospital fee program");
-//        name3TextView.setText("Proposition 58 - Repeals Prop 227 of 1998, thus allowing for bilingual education in public schools");
+        name3TextView.setText("Proposition 58 - Repeals Prop 227 of 1998, thus allowing for bilingual education in public schools");
         question1TextView.setText("Do you think that the minimum wage should be increased to $15 by 2021?");
         question2TextView.setText("Do you think changes to the hospital fee program should require voter approval?");
-//        question3TextView.setText("Do you think that we should allow bilingual education in public schools.");
+        question3TextView.setText("Do you think that we should allow bilingual education in public schools?");
     }
 
     private void initializeViews(View v){
