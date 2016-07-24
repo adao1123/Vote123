@@ -71,9 +71,20 @@ public class MyBallotFragment extends Fragment {
         propNames = new ArrayList<>();
         manageFirebase();
         getAnswersFromPref();
-        setNameTextViews();
-        setQTextViews();
+
+//        setNameTextViews();
+//        setQTextViews();
+        setTempInfo();
         setBubbles();
+    }
+
+    private void setTempInfo(){
+        name1TextView.setText("California \"Fair Wage Act of 2016\" - Increases the minimum wage in California to $15 by 2021.");
+        name2TextView.setText("Proposition 52 - Requires voter approval of changes to the hospital fee program");
+//        name3TextView.setText("Proposition 58 - Repeals Prop 227 of 1998, thus allowing for bilingual education in public schools");
+        question1TextView.setText("Do you think that the minimum wage should be increased to $15 by 2021?");
+        question2TextView.setText("Do you think changes to the hospital fee program should require voter approval?");
+//        question3TextView.setText("Do you think that we should allow bilingual education in public schools.");
     }
 
     private void initializeViews(View v){
@@ -213,10 +224,10 @@ public class MyBallotFragment extends Fragment {
             return;
         }
         switch(answer){
-            case "yes":
+            case "Yes":
                 yes1ImageView.setImageResource(R.drawable.fill_icon);
                 break;
-            case "no":
+            case "No":
                 no1ImageView.setImageResource(R.drawable.fill_icon);
                 break;
             default:
@@ -229,10 +240,10 @@ public class MyBallotFragment extends Fragment {
             return;
         }
         switch(answer){
-            case "yes":
+            case "Yes":
                 yes2ImageView.setImageResource(R.drawable.fill_icon);
                 break;
-            case "no":
+            case "No":
                 no2ImageView.setImageResource(R.drawable.fill_icon);
                 break;
             default:
@@ -245,10 +256,10 @@ public class MyBallotFragment extends Fragment {
             return;
         }
         switch(answer){
-            case "yes":
+            case "Yes":
                 yes3ImageView.setImageResource(R.drawable.fill_icon);
                 break;
-            case "no":
+            case "No":
                 no3ImageView.setImageResource(R.drawable.fill_icon);
                 break;
             default:
