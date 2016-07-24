@@ -57,7 +57,7 @@
                     android:layout_marginBottom="10dp"/>
 
                 <Button
-                    android:background="@drawable/location_icon2"
+                    android:background="@drawable/location_icon3"
                     android:layout_gravity="center"
                     android:visibility="gone"
                     android:id="@+id/direction_button_ID"
